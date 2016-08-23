@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Редактировать фильм";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model MovieTickets.Models.Movie
+<h2>Фильм: @Model.Name</h2>
+@using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <fieldset>
+        @Html.HiddenFor(m => m.ID)
+        <p>
+                @Html.LabelFor(m => m.Name, "Название фильма")
+                <br />
+                @Html.EditorFor(m => m.Name )
+            </p>
+        <p>
+            @Html.LabelFor(m => m.Description, "Описание")
+            <br />
+            @Html.TextAreaFor(m => m.Description, new { cols = 55, @rows = 4 })
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Image, "Загрузите постер фильма на сервер")
+        <p>
+            <input type="file" name="uploadImage" />
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Price, "Цена")
+            <br />
+            @Html.EditorFor(m => m.Price)
+        </p>
+        <p><input type="submit" value="Отправить" /></p>
+    </fieldset>
+}
+
