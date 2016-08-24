@@ -12,9 +12,34 @@ namespace MovieTickets.Controllers
     public class HomeController : Controller
     {
         MovieTicketContext db = new MovieTicketContext();
-        public ActionResult Index()
+        public ViewResult Index(string sortOrder, string searchString)
         {
-            return View(db.Movies);
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "Date desc" : "Date";
+            var movies = from m in db.Movies
+                           select m;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                movies = movies.Where(s => s.Name.ToUpper().Contains(searchString.ToUpper())
+                                       || s.Name.ToUpper().Contains(searchString.ToUpper()));
+            }
+            switch (sortOrder)
+            {
+                case "Name desc":
+                    movies = movies.OrderByDescending(s => s.Name);
+                    break;
+                case "Date":
+                    movies = movies.OrderBy(s => s.Date);
+                    break;
+                case "Date desc":
+                    movies = movies.OrderByDescending(s => s.Date);
+                    break;
+                default:
+                    movies = movies.OrderBy(s => s.Name);
+                    break;
+            }
+
+            return View(movies.ToList());
         }
 
         public ActionResult Edit(int id = 0)

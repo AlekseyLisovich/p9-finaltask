@@ -31,6 +31,17 @@
             <br />
             @Html.EditorFor(m => m.Price)
         </p>
+
+        <p>
+            @Html.LabelFor(m => m.Date, "Дата")
+            <br />
+            @Html.EditorFor(m => m.Date)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Rating, "Рейтинг")
+            <br />
+            @Html.EditorFor(m => m.Rating)
+        </p>
         <p><input type="submit" value="Отправить" /></p>
     </fieldset>
 }

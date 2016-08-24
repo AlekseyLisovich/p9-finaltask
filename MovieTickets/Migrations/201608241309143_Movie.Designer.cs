@@ -7,13 +7,13 @@ namespace MovieTickets.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class gku : IMigrationMetadata
+    public sealed partial class Movie : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(gku));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Movie));
         
         string IMigrationMetadata.Id
         {
-            get { return "201608241047266_gku"; }
+            get { return "201608241309143_Movie"; }
         }
         
         string IMigrationMetadata.Source

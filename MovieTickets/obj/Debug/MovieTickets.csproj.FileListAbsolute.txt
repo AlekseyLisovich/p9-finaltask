@@ -72,7 +72,5 @@ D:\work\net_lab\p9-finalproject\MovieTickets\bin\Microsoft.Owin.Host.SystemWeb.x
 D:\work\net_lab\p9-finalproject\MovieTickets\bin\Microsoft.Owin.Security.xml
 D:\work\net_lab\p9-finalproject\MovieTickets\bin\Microsoft.Owin.Security.Cookies.xml
 D:\work\net_lab\p9-finalproject\MovieTickets\bin\Microsoft.Owin.Security.OAuth.xml
-D:\work\net_lab\p9-finalproject\MovieTickets\obj\Debug\MovieTickets.Migrations.gku.resources
+D:\work\net_lab\p9-finalproject\MovieTickets\obj\Debug\MovieTickets.Migrations.Movie.resources
 D:\work\net_lab\p9-finalproject\MovieTickets\obj\Debug\MovieTickets.csproj.GenerateResource.Cache
-D:\work\net_lab\p9-finalproject\MovieTickets\obj\Debug\MovieTickets.Migrations.DataMigration.resources
-D:\work\net_lab\p9-finalproject\MovieTickets\obj\Debug\MovieTickets.Migrations.DataMigration1.resources

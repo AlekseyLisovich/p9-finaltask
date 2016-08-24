@@ -7,11 +7,21 @@
 <p>
     @Html.ActionLink("Добавить фильм", "Create")
 </p>
+@using (Html.BeginForm())
+{
+    <p>
+        
+        Поиск: @Html.TextBox("searchString")
+        <input type="submit" value="Search" />
+    </p>
+} 
 <table>
     <tr>
         <th>Фото</th>
         <th>Название фильма</th>
         <th>Цена</th>
+        <th>Дата</th>
+        <th>Рейтинг</th>
         <th></th>
     </tr>
 
@@ -28,6 +38,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Price )
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date.Date )
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating) 
+            </td>
+
             <td>
                 @Html.ActionLink("Редактировать", "Edit", new { id = item.ID }) |
                 @Html.ActionLink("Удалить", "Delete", new { id = item.ID })

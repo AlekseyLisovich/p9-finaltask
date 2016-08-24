@@ -17,6 +17,8 @@ namespace MovieTickets.Models
         public string Description { get; set; }
         public byte[] Image { get; set; }
         public Nullable<double> Price { get; set; }
+        public DateTime Date { get; set; }
+        public int Rating { get; set; }
 
         public virtual ICollection<OrderHistory> OrderHistories { get; set; }
     }
