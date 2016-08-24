@@ -1,20 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MovieTickets.Models
 {
-    public class Role
+    public class Role : IdentityRole
     {
-        public Role()
-        {
-            this.Users = new HashSet<User>();
-        }
+        public Role() { }
 
-        public int ID { get; set; }
-        public string RoleStatus { get; set; }
-
-        public virtual ICollection<User> Users { get; set; }
+        public string Description { get; set; }
     }
 }
