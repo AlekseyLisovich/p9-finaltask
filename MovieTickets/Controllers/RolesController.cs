@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using MovieTickets.Models.Account;
 
 public class RolesController : Controller
 {
+    
     private ApplicationRoleManager RoleManager
     {
         get
