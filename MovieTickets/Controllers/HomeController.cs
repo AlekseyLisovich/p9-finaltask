@@ -106,5 +106,32 @@ namespace MovieTickets.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            Movie m = db.Movies.Find(id);
+            MovieViewModel model = new MovieViewModel();
+            model.Movie = new Movie {Name = m.Name, ID = m.ID, Date = m.Date, Description = m.Description, Image = m.Image, MovieComments = m.MovieComments
+            , Price =m.Price, Rating = m.Rating };
+            model.Comment = m.MovieComments;
+            model.NewComment = new MovieComment();
+
+            if (model == null)
+            {
+                return HttpNotFound();
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Details(int id, MovieViewModel m)
+        {
+            Movie movie = db.Movies.Find(id);
+            m.NewComment.MovieId = movie.ID;
+            db.MovieComments.Add(m.NewComment);
+            db.SaveChanges();
+
+            return RedirectToAction("Details");
+        }
     }
 }

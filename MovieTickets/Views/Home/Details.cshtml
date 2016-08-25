@@ -1,0 +1,48 @@
+﻿@model MovieTickets.Models.MovieViewModel
+@{
+    ViewBag.Title = "Описание фильма";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Фильм: @Model.Movie.Name</h2>
+
+    <div class="movie-details">
+        @Html.HiddenFor(m => m.Movie.ID)
+        <p class="photo-details">
+            @Html.Raw("<img src=\"data:image/jpeg;base64,"
+                                + Convert.ToBase64String(Model.Movie.Image) + "\" />")
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Movie.Description, "Описание")
+            <br />
+            @Html.DisplayFor(m => m.Movie.Description)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Movie.Price, "Цена")
+            <br />
+            @Html.DisplayFor(m => m.Movie.Price)
+        </p>
+
+        <p>
+            @Html.LabelFor(m => m.Movie.Date, "В прокате до:")
+            @Html.DisplayFor(m => m.Movie.Date)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Movie.Rating, "Рейтинг фильма:")
+            @Html.DisplayFor(m => m.Movie.Rating)
+        </p>
+    </div>
+@using (Html.BeginForm("Details", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<p>
+        @Html.TextAreaFor(m => m.NewComment.Text, new { cols = 200, @rows = 5 })
+    </p>
+<p><button type="submit">Отправить</button></p>
+<p>
+            @foreach (var c in Model.Comment)
+            {
+<br />
+                @Html.DisplayFor(comment => c.Text)
+            }
+        </p>
+}

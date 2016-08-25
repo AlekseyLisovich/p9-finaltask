@@ -18,8 +18,10 @@ namespace MovieTickets.Models
             return new MovieTicketContext();
         }
 
+        public virtual DbSet<MovieComment> MovieComments { get; set; }
         public virtual DbSet<OrderHistory> OrderHistories { get; set; }
         public virtual DbSet<OrderStatus> OrderStatus { get; set; }
         public virtual DbSet<Movie> Movies { get; set; }
+        
     }
 }
