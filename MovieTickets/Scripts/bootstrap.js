@@ -77,6 +77,16 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
 }(window.jQuery);
 
+var jumboHeight = $('.jumbotron').outerHeight();
+function parallax() {
+    var scrolled = $(window).scrollTop();
+    $('.bg').css('height', (jumboHeight - scrolled) + 'px');
+}
+
+$(window).scroll(function (e) {
+    parallax();
+});
+
 /* ========================================================================
  * Bootstrap: alert.js v3.0.0
  * http://twbs.github.com/bootstrap/javascript.html#alerts

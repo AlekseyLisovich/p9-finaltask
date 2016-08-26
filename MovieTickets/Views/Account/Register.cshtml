@@ -6,41 +6,39 @@
 
 <h2>Регистрация</h2>
 
-
-@using (Html.BeginForm())
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
+    <h4>Регистрация пользователя</h4>
+    <hr />
 
-    <div>
-        <h4>Регистрация пользователя</h4>
-        <hr />
-        @Html.ValidationSummary(false)
-
-        <div>
-            Электронный адрес
-            <div>
-                @Html.EditorFor(model => model.Email)
+    <div class="form-group">
+        <div class="editor-label">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+            </div>
+            <div class="col-md-10 editor-field">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Email)
             </div>
         </div>
 
-        <div>
-            Пароль
-            <div>
-                @Html.EditorFor(model => model.Password)
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10 ">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Password )
         </div>
-
-        <div>
-            Подтвердить пароль
-            <div>
-                @Html.EditorFor(model => model.PasswordConfirm)
-            </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PasswordConfirm, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10 ">
+            @Html.PasswordFor(m => m.PasswordConfirm, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.PasswordConfirm )
         </div>
-
-        <div>
-            <div>
-                <input type="submit" value="Зарегистрировать" />
-            </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Register" />
         </div>
     </div>
 }

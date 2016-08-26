@@ -125,7 +125,7 @@ namespace MovieTickets.Controllers
             User user = await UserManager.FindByEmailAsync(User.Identity.Name);
             if (user != null)
             {
-                EditModel model = new EditModel { PhoneNumber = user.PhoneNumber, Email = user.Email, Name = user.UserName, Password = user.PasswordHash};
+                EditModel model = new EditModel { PhoneNumber = user.PhoneNumber, Email = user.Email, Name = user.UserName, Password = ""};
                 return View(model);
             }
             return RedirectToAction("Login", "Account");
@@ -140,6 +140,12 @@ namespace MovieTickets.Controllers
                 user.UserName = model.Name;
                 user.Email = model.Email;
                 user.PhoneNumber = model.PhoneNumber;
+                string oldPassword = model.Password;
+                if (oldPassword != null && model.NewPassword != null)
+                     await UserManager.ChangePasswordAsync(user.Id, oldPassword, model.NewPassword);
+
+                
+
                 IdentityResult result = await UserManager.UpdateAsync(user);
                 if (result.Succeeded)
                 {

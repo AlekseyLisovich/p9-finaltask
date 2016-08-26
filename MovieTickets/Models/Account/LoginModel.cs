@@ -5,9 +5,9 @@ namespace MovieTickets.Models.Account
 {
     public class LoginModel
     {
-        [Required]
+        [Required(ErrorMessage = "Поле должно быть установлено")]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Поле должно быть установлено")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }

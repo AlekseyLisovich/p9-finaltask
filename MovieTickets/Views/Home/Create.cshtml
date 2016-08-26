@@ -7,42 +7,52 @@
 
 <h2>Добавление нового фильма</h2>
 
-@using (Html.BeginForm("Create", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
 {
     <fieldset>
         @Html.HiddenFor(m => m.ID)
-        <p>
-            @Html.LabelFor(m => m.Name, "Название фильма")
-            <br />
-            @Html.EditorFor(m => m.Name)
-        </p>
-        <p>
-            @Html.LabelFor(m => m.Description, "Описание")
-            <br />
-            @Html.TextAreaFor(m => m.Description, new { cols = 55, @rows = 4 })
-        </p>
-        <p>
-            @Html.LabelFor(m => m.Image, "Загрузите постер фильма на сервер")
-        <p>
-            <input type="file" name="uploadImage" />
-        </p>
-        <p>
-            @Html.LabelFor(m => m.Price, "Цена")
-            <br />
-            @Html.EditorFor(m => m.Price)
-        </p>
-
-        <p>
-            @Html.LabelFor(m => m.Date, "Дата")
-            <br />
-            @Html.EditorFor(m => m.Date)
-        </p>
-        <p>
-            @Html.LabelFor(m => m.Rating, "Рейтинг")
-            <br />
-            @Html.EditorFor(m => m.Rating)
-        </p>
-        <p><input type="submit" value="Отправить" /></p>
+        <div class="form-group">
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Name, "Название", new { @class = "col-md-2 control-label" })
+            </div>
+            <div class="col-md-10 editor-field">
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Description, "Описание", new { @class = "col-md-2 control-label" })
+            </div>
+            <div class="col-md-10 editor-field">
+                @Html.TextAreaFor(m => m.Description, new { cols = 100, @rows = 5, @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="raw">
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.Image, "Загрузите постер", new { @class = "col-md-2 control-label" })
+                </div>
+                <div class="col-md-10">
+                    <input type="file" value="uploadImage" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Price, "Цена", new { @class = "col-md-2 control-label" })
+            </div>
+            <div class="col-md-10 editor-field">
+                @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Price)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Отправить" />
+            </div>
+        </div>
     </fieldset>
 }
 <div>

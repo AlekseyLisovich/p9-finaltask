@@ -6,43 +6,55 @@
 
 <h2>Фильм: @Model.Movie.Name</h2>
 
-    <div class="movie-details">
-        @Html.HiddenFor(m => m.Movie.ID)
-        <p class="photo-details">
-            @Html.Raw("<img src=\"data:image/jpeg;base64,"
+<div class="movie-details">
+    @Html.HiddenFor(m => m.Movie.ID)
+    <p class="photo-details">
+        @Html.Raw("<img src=\"data:image/jpeg;base64,"
                                 + Convert.ToBase64String(Model.Movie.Image) + "\" />")
-        </p>
-        <p>
-            @Html.LabelFor(m => m.Movie.Description, "Описание")
-            <br />
-            @Html.DisplayFor(m => m.Movie.Description)
-        </p>
-        <p>
-            @Html.LabelFor(m => m.Movie.Price, "Цена")
-            <br />
-            @Html.DisplayFor(m => m.Movie.Price)
-        </p>
-
-        <p>
-            @Html.LabelFor(m => m.Movie.Date, "В прокате до:")
-            @Html.DisplayFor(m => m.Movie.Date)
-        </p>
-        <p>
-            @Html.LabelFor(m => m.Movie.Rating, "Рейтинг фильма:")
-            @Html.DisplayFor(m => m.Movie.Rating)
-        </p>
-    </div>
-@using (Html.BeginForm("Details", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-<p>
-        @Html.TextAreaFor(m => m.NewComment.Text, new { cols = 200, @rows = 5 })
     </p>
-<p><button type="submit">Отправить</button></p>
-<p>
-            @foreach (var c in Model.Comment)
-            {
-<br />
+    <p class="text-details">
+        @Html.LabelFor(m => m.Movie.Description, "Описание")
+        <br />
+        @Html.DisplayFor(m => m.Movie.Description)
+    </p>
+    <p class="text-details">
+        @Html.LabelFor(m => m.Movie.Price, "Цена:")
+        @Html.DisplayFor(m => m.Movie.Price)руб
+    </p>
+
+    <p class="text-details">
+        @Html.LabelFor(m => m.Movie.Date, "В прокате до:")
+        @Html.DisplayFor(m => m.Movie.Date)
+    </p>
+    <p class="text-details">
+        @Html.LabelFor(m => m.Movie.Rating, "Рейтинг фильма:")
+        @Html.DisplayFor(m => m.Movie.Rating)
+    </p>
+</div>
+
+
+@using (Html.BeginForm("Details", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+{
+    <div class="form-group">
+        <div class="editor-field col-md-12">
+            @Html.TextAreaFor(m => m.NewComment.Text, 5, 40, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group col-md-12">
+        <input type="submit" class="btn btn-default" value="Отправить" />
+    </div>
+    <h2>Комментарии пользователей</h2>
+    <div>
+        @foreach (var c in Model.Comment)
+                {
+            <br />
+            <h6>
+                @Html.DisplayFor(comment => c.UserName)
+                @Html.DisplayFor(comment => c.PublishDate )
+            </h6>
+            <p class="text-comment">
                 @Html.DisplayFor(comment => c.Text)
-            }
-        </p>
+            </p>
+        }
+    </div>
 }

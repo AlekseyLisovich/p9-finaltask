@@ -207,6 +207,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608251511219_InitialCreate.cs" />
+    <Compile Include="Migrations\201608251511219_InitialCreate.Designer.cs">
+      <DependentUpon>201608251511219_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608261506324_fix db.cs" />
+    <Compile Include="Migrations\201608261506324_fix db.Designer.cs">
+      <DependentUpon>201608261506324_fix db.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608261658279_fix db1.cs" />
+    <Compile Include="Migrations\201608261658279_fix db1.Designer.cs">
+      <DependentUpon>201608261658279_fix db1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608261709523_fix db2.cs" />
+    <Compile Include="Migrations\201608261709523_fix db2.Designer.cs">
+      <DependentUpon>201608261709523_fix db2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\ApplicationRoleManager.cs" />
     <Compile Include="Models\Account\ApplicationUserManager.cs" />
     <Compile Include="Models\Account\CreateRoleModel.cs" />
@@ -225,6 +242,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\photo\Films.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -285,6 +303,20 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201608251511219_InitialCreate.resx">
+      <DependentUpon>201608251511219_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608261506324_fix db.resx">
+      <DependentUpon>201608261506324_fix db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608261658279_fix db1.resx">
+      <DependentUpon>201608261658279_fix db1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608261709523_fix db2.resx">
+      <DependentUpon>201608261709523_fix db2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

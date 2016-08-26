@@ -3,54 +3,62 @@
     ViewBag.Title = "Список фильмов";
 }
 
-<h2>Сегодня в прокате</h2>
-<p>
-    @Html.ActionLink("Добавить фильм", "Create")
-</p>
-@using (Html.BeginForm())
-{
+<div class="bg"></div>
+<div class="jumbotron">
+    <h1>Фильмы онлайн</h1>
+</div>
+<div class="container">
+    <h2>Сегодня в прокате</h2>
     <p>
-        
-        Поиск: @Html.TextBox("searchString")
-        <input type="submit" value="Search" />
+        @Html.ActionLink("Добавить фильм", "Create")
     </p>
-} 
-<table>
-    <tr>
-        <th>Фото</th>
-        <th>Название фильма</th>
-        <th>Цена</th>
-        <th>Дата</th>
-        <th>Рейтинг</th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
-        <tr>
-            <td>
-                <a href="@Url.Action("Details", "Home", new { id = item.ID } ) ">
-                    @Html.Raw("<img src=\"data:image/jpeg;base64,"
-                                + Convert.ToBase64String(item.Image) + "\" />")
-                </a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price )
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date.Date )
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rating) 
-            </td>
+        <p>
 
-            <td>
-                @Html.ActionLink("Редактировать", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Удалить", "Delete", new { id = item.ID })
-            </td>
-        </tr>
+            @Html.TextBox("searchString", null, new { @class = "form-control textbox-search" })
+            <input type="submit" class="btn btn-default btn-search" value="Search" />
+        </p>
     }
-</table>
+    <table class="table table-striped">
+        <tr>
+            <th class="text-center">Фото</th>
+            <th class="text-center">Название фильма</th>
+            <th class="text-center">Цена</th>
+            <th class="text-center">Дата</th>
+            <th class="text-center">Рейтинг</th>
+            <th class="text-center"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("Details", "Home", new { id = item.ID } ) ">
+                        @Html.Raw("<img src=\"data:image/jpeg;base64,"
+                                + Convert.ToBase64String(item.Image) + "\" />")
+                    </a>
+                </td>
+                <td class="text-center">
+                    <a href="@Url.Action("Details", "Home", new { id = item.ID } ) ">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </a>
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Редактировать", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+    </table>
+    </div>

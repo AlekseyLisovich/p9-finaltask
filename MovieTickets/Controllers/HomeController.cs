@@ -6,11 +6,23 @@ using System.Web.Mvc;
 using MovieTickets.Models;
 using System.Data.Entity;
 using System.IO;
+using MovieTickets.Models.Account;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using System.Security.Claims;
 
 namespace MovieTickets.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationUserManager UserManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+        }
         MovieTicketContext db = new MovieTicketContext();
         public ViewResult Index(string sortOrder, string searchString)
         {
@@ -55,13 +67,16 @@ namespace MovieTickets.Controllers
         [HttpPost]
         public ActionResult Edit(Movie movie, HttpPostedFileBase uploadImage)
         {
-            using (var binaryReader = new BinaryReader(uploadImage.InputStream))
+            if (movie.Image != null)
             {
-                movie.Image = binaryReader.ReadBytes(uploadImage.ContentLength);
-            }
+                using (var binaryReader = new BinaryReader(uploadImage.InputStream))
+                {
+                    movie.Image = binaryReader.ReadBytes(uploadImage.ContentLength);
+                }
 
-            db.Entry(movie).State = EntityState.Modified;
-            db.SaveChanges();
+                db.Entry(movie).State = EntityState.Modified;
+                db.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
 
@@ -73,14 +88,16 @@ namespace MovieTickets.Controllers
         [HttpPost]
         public ActionResult Create(Movie movie, HttpPostedFileBase uploadImage)
         {
-            using (var binaryReader = new BinaryReader(uploadImage.InputStream))
+            if (movie.Description != null && movie.Name != null)
             {
-                movie.Image = binaryReader.ReadBytes(uploadImage.ContentLength);
+                using (var binaryReader = new BinaryReader(uploadImage.InputStream))
+                {
+                    movie.Image = binaryReader.ReadBytes(uploadImage.ContentLength);
+                }
+
+                db.Movies.Add(movie);
+                db.SaveChanges();     
             }
-
-            db.Movies.Add(movie);
-            db.SaveChanges();
-
             return RedirectToAction("Index");
         }
 
@@ -109,6 +126,7 @@ namespace MovieTickets.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
+            
             Movie m = db.Movies.Find(id);
             MovieViewModel model = new MovieViewModel();
             model.Movie = new Movie {Name = m.Name, ID = m.ID, Date = m.Date, Description = m.Description, Image = m.Image, MovieComments = m.MovieComments
@@ -126,8 +144,11 @@ namespace MovieTickets.Controllers
         [HttpPost]
         public ActionResult Details(int id, MovieViewModel m)
         {
+            User user = UserManager.FindByEmail(User.Identity.Name);
             Movie movie = db.Movies.Find(id);
             m.NewComment.MovieId = movie.ID;
+            m.NewComment.PublishDate = DateTime.Now;
+            m.NewComment.UserName = user.UserName;
             db.MovieComments.Add(m.NewComment);
             db.SaveChanges();
 

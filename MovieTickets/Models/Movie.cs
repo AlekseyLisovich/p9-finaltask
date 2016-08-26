@@ -15,10 +15,15 @@ namespace MovieTickets.Models
         }
 
         public int ID { get; set; }
+        [Required(ErrorMessage = "Поле должно быть установлено")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "Поле должно быть установлено")]
         public string Description { get; set; }
+        [Required(ErrorMessage = "Поле должно быть установлено")]
         public byte[] Image { get; set; }
+        [Required(ErrorMessage = "Поле должно быть установлено")]
         public double? Price { get; set; }
+        [Required(ErrorMessage = "Поле должно быть установлено")]
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
         public double Rating { get; set; }
