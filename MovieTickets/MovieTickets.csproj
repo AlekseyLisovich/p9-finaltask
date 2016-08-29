@@ -207,23 +207,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201608251511219_InitialCreate.cs" />
-    <Compile Include="Migrations\201608251511219_InitialCreate.Designer.cs">
-      <DependentUpon>201608251511219_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201608261506324_fix db.cs" />
-    <Compile Include="Migrations\201608261506324_fix db.Designer.cs">
-      <DependentUpon>201608261506324_fix db.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201608261658279_fix db1.cs" />
-    <Compile Include="Migrations\201608261658279_fix db1.Designer.cs">
-      <DependentUpon>201608261658279_fix db1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201608261709523_fix db2.cs" />
-    <Compile Include="Migrations\201608261709523_fix db2.Designer.cs">
-      <DependentUpon>201608261709523_fix db2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\ApplicationRoleManager.cs" />
     <Compile Include="Models\Account\ApplicationUserManager.cs" />
     <Compile Include="Models\Account\CreateRoleModel.cs" />
@@ -239,6 +222,7 @@
     <Compile Include="Models\OrderStatus.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -288,13 +272,15 @@
     <Content Include="Views\Home\Delete.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Delete.cshtml" />
+    <Content Include="Views\Roles\DeleteUser.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Roles\Create.cshtml" />
-    <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Roles\EditRole.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\CommentsList.cshtml" />
+    <Content Include="Views\Roles\GetUsers.cshtml" />
+    <Content Include="Views\Roles\EditUserRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -303,20 +289,6 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608251511219_InitialCreate.resx">
-      <DependentUpon>201608251511219_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608261506324_fix db.resx">
-      <DependentUpon>201608261506324_fix db.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608261658279_fix db1.resx">
-      <DependentUpon>201608261658279_fix db1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608261709523_fix db2.resx">
-      <DependentUpon>201608261709523_fix db2.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

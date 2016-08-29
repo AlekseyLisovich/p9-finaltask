@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using MovieTickets.Models;
 using MovieTickets.Models.Account;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 public class RolesController : Controller
 {
@@ -18,6 +19,14 @@ public class RolesController : Controller
         get
         {
             return HttpContext.GetOwinContext().GetUserManager<ApplicationRoleManager>();
+        }
+    }
+
+    private ApplicationUserManager UserManager
+    {
+        get
+        {
+            return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
         }
     }
 
@@ -52,7 +61,7 @@ public class RolesController : Controller
         return View(model);
     }
 
-    public async Task<ActionResult> Edit(string id)
+    public async Task<ActionResult> EditRole(string id)
     {
         Role role = await RoleManager.FindByIdAsync(id);
         if (role != null)
@@ -62,7 +71,7 @@ public class RolesController : Controller
         return RedirectToAction("Index");
     }
     [HttpPost]
-    public async Task<ActionResult> Edit(EditRoleModel model)
+    public async Task<ActionResult> EditRole(EditRoleModel model)
     {
         if (ModelState.IsValid)
         {
@@ -85,7 +94,7 @@ public class RolesController : Controller
         return View(model);
     }
 
-    public async Task<ActionResult> Delete(string id)
+    public async Task<ActionResult> DeleteRole(string id)
     {
         Role role = await RoleManager.FindByIdAsync(id);
         if (role != null)
@@ -93,5 +102,70 @@ public class RolesController : Controller
             IdentityResult result = await RoleManager.DeleteAsync(role);
         }
         return RedirectToAction("Index");
+    }
+
+    public ViewResult GetUsers()
+    {
+        var userRoleModels = new List<UserRole>();
+        var users = UserManager.Users;
+        foreach (var user in users)
+        {
+            userRoleModels.Add(new UserRole
+            {
+                User = user,
+                Roles = UserManager.GetRoles(user.Id)
+            });
+        }
+        
+        return View(userRoleModels);
+    }
+
+    [HttpGet]
+    public ActionResult EditUserRole(string id)
+    {
+        User user = UserManager.FindById(id);
+        var userRoleModels = new UserRole
+        {
+            User = user,
+            Roles = UserManager.GetRoles(user.Id)
+        };
+        return View(userRoleModels);
+    }
+
+    [HttpPost]
+    public ActionResult EditUserRole(UserRole u, string id)
+    {
+
+        User user = UserManager.FindById(id);
+        IList<string> roles = UserManager.GetRoles(user.Id);
+        if (user != null)
+        {
+            UserManager.RemoveFromRoles(user.Id, roles.ToArray());
+            UserManager.AddToRole(user.Id, u.Roles.First());
+        }
+
+        return RedirectToAction("GetUsers");
+    }
+
+    [HttpGet]
+    public ActionResult DeleteUser()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    [ActionName("DeleteUser")]
+    public async Task<ActionResult> DeleteConfirmed(string id)
+    {
+        User user = await UserManager.FindByIdAsync(id);
+        if (user != null)
+        {
+            IdentityResult result = await UserManager.DeleteAsync(user);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("GetUsers", "Roles");
+            }
+        }
+        return RedirectToAction("GetUsers", "Roles");
     }
 }

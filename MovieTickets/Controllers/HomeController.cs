@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace MovieTickets.Controllers
 {
@@ -67,7 +68,7 @@ namespace MovieTickets.Controllers
         [HttpPost]
         public ActionResult Edit(Movie movie, HttpPostedFileBase uploadImage)
         {
-            if (movie.Image != null)
+            if (movie.Description != null && movie.Name != null && uploadImage != null)
             {
                 using (var binaryReader = new BinaryReader(uploadImage.InputStream))
                 {
@@ -88,7 +89,8 @@ namespace MovieTickets.Controllers
         [HttpPost]
         public ActionResult Create(Movie movie, HttpPostedFileBase uploadImage)
         {
-            if (movie.Description != null && movie.Name != null)
+            var a = HttpContext;
+            if (movie.Description != null && movie.Name != null && uploadImage != null)
             {
                 using (var binaryReader = new BinaryReader(uploadImage.InputStream))
                 {

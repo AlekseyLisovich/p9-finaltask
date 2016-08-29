@@ -6,8 +6,33 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 </head>
 <body>
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Movie
+                    </a>
+                </li>
+                <li>
+                    @Html.ActionLink("Home", "Index", "Home")
+                </li>
+                <li>
+                    @Html.ActionLink("Cart"," Index", "Home")
+                </li>
+                <li>
+                    @Html.ActionLink("About", "About", "Home")
+                </li>
+                <li>
+                    @Html.ActionLink("Account", "Edit", "Account")
+                </li>
+                
+            </ul>
+        </div>
+        </div>
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -21,11 +46,8 @@
                     </div>
                 </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav nav-pills">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Account", "Edit", "Account")</li>
-                </ul>
+                <a href="#menu-toggle" class="btn btn-secondary btn-menu" id="menu-toggle">Menu</a>
+                
             </div>
         </div>
     </div>
@@ -33,10 +55,16 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - All rights reserved </p>
         </footer>
     </div>
 
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

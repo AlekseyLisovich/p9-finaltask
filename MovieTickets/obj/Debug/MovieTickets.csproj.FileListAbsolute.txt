@@ -153,8 +153,3 @@ D:\work\net_lab\p9-finalproject\p9-finaltask\MovieTickets\bin\Newtonsoft.Json.xm
 D:\work\net_lab\p9-finalproject\p9-finaltask\MovieTickets\obj\Debug\MovieTickets.csprojResolveAssemblyReference.cache
 D:\work\net_lab\p9-finalproject\p9-finaltask\MovieTickets\obj\Debug\MovieTickets.dll
 D:\work\net_lab\p9-finalproject\p9-finaltask\MovieTickets\obj\Debug\MovieTickets.pdb
-D:\work\net_lab\p9-finalproject\p9-finaltask\MovieTickets\obj\Debug\MovieTickets.Migrations.InitialCreate.resources
-D:\work\net_lab\p9-finalproject\p9-finaltask\MovieTickets\obj\Debug\MovieTickets.csproj.GenerateResource.Cache
-D:\work\net_lab\p9-finalproject\p9-finaltask\MovieTickets\obj\Debug\MovieTickets.Migrations.fixdb.resources
-D:\work\net_lab\p9-finalproject\p9-finaltask\MovieTickets\obj\Debug\MovieTickets.Migrations.fixdb1.resources
-D:\work\net_lab\p9-finalproject\p9-finaltask\MovieTickets\obj\Debug\MovieTickets.Migrations.fixdb2.resources

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MovieTickets.Models.UserRole>
+@{
+    ViewBag.Title = "Список пользователей";
+}
+
+<div class="container">
+    <h2>Пользователи</h2>
+    
+    <table class="table table-striped">
+        <tr>
+            <th class="text-center">Имя</th>
+            <th class="text-center">Email</th>
+            <th class="text-center">Телефон</th>
+            <th class="text-center">Роль</th>
+            <th class="text-center"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="role-details">
+                    @Html.DisplayFor(modelItem => item.User.UserName )
+                </td>
+                <td class="role-details">
+                    @Html.DisplayFor(modelItem => item.User.Email )
+                </td>
+                <td class="role-details">
+                    @Html.DisplayFor(modelItem => item.User.PhoneNumber )
+                </td>
+                @foreach (var roles in item.Roles )
+                {
+                    <td class="role-details">
+                        @Html.DisplayFor(r => roles  )
+                    </td>
+                }
+                <td>
+                    @Html.ActionLink("Изменить роль", "EditUserRole", new { id = item.User.Id }) |
+                    @Html.ActionLink("Удалить", "DeleteUser", new { id = item.User.Id })
+                </td>
+            </tr>
+        }
+    </table>
+    
+</div>
+

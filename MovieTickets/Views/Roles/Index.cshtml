@@ -5,6 +5,8 @@
 }
 
 <h2>Роли</h2>
+@Html.ActionLink("Create", "Create")
+<br /> 
 <table class="table">
     <tr>
         <th>Название</th>
@@ -17,9 +19,9 @@
         <tr>
             <td>@item.Name </td>
             <td>@item.Description</td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            <td>             
+                @Html.ActionLink("Edit", "EditRole", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "DeleteRole", new { id = item.Id })
             </td>
         </tr>
     }

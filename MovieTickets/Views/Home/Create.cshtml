@@ -17,7 +17,6 @@
             </div>
             <div class="col-md-10 editor-field">
                 @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Name)
             </div>
         </div>
         <div class="form-group">
@@ -26,17 +25,14 @@
             </div>
             <div class="col-md-10 editor-field">
                 @Html.TextAreaFor(m => m.Description, new { cols = 100, @rows = 5, @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Name)
             </div>
         </div>
         <div class="form-group">
-            <div class="raw">
-                <div class="editor-label">
-                    @Html.LabelFor(m => m.Image, "Загрузите постер", new { @class = "col-md-2 control-label" })
-                </div>
-                <div class="col-md-10">
-                    <input type="file" value="uploadImage" />
-                </div>
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Image, "Загрузите постер фильма на сервер")
+            </div>
+            <div class="col-md-10 editor-field">
+                <input type="file" name="uploadImage" />
             </div>
         </div>
         <div class="form-group">
@@ -45,7 +41,23 @@
             </div>
             <div class="col-md-10 editor-field">
                 @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Price)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Date, "Дата", new { @class = "col-md-2 control-label" })
+            </div>
+            <div class="col-md-10 editor-field">
+                @Html.TextBoxFor(m => m.Date, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Rating, "Рейтинг", new { @class = "col-md-2 control-label" })
+            </div>
+            <div class="col-md-10 editor-field">
+                @Html.TextBoxFor(m => m.Rating, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
