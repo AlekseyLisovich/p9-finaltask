@@ -15,21 +15,30 @@
 
         <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
         <div class="form-group">
-            <div class="col-md-10 editor-label">
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Логин" })
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+            </div>
+            <div class="col-md-10 editor-field">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Email)
             </div>
         </div>
+
         <div class="form-group">
-            <div class="col-md-10 editor-label">
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Пароль" })
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10 ">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Password)
             </div>
         </div>
+
         <div class="form-group">
-            <div class="col-md-offset-2">
-                <input type="submit" value="Log in" class="btn btn-default" />
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Login" />
             </div>
         </div>
+    </div>
+    <div>
+        @Html.ActionLink("Register", "Register")
     </div>
 }

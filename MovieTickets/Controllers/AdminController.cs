@@ -11,7 +11,8 @@ using MovieTickets.Models;
 using MovieTickets.Models.Account;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-public class RolesController : Controller
+[Authorize(Roles = "admin")]
+public class AdminController : Controller
 {
     
     private ApplicationRoleManager RoleManager
@@ -32,15 +33,20 @@ public class RolesController : Controller
 
     public ActionResult Index()
     {
+        return View();
+    }
+
+    public ActionResult RoleList()
+    {
         return View(RoleManager.Roles);
     }
 
-    public ActionResult Create()
+    public ActionResult CreateRole()
     {
         return View();
     }
     [HttpPost]
-    public async Task<ActionResult> Create(CreateRoleModel model)
+    public async Task<ActionResult> CreateRole(CreateRoleModel model)
     {
         if (ModelState.IsValid)
         {
@@ -51,7 +57,7 @@ public class RolesController : Controller
             });
             if (result.Succeeded)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("RoleList");
             }
             else
             {
@@ -68,7 +74,7 @@ public class RolesController : Controller
         {
             return View(new EditRoleModel { Id = role.Id, Name = role.Name, Description = role.Description });
         }
-        return RedirectToAction("Index");
+        return RedirectToAction("RoleList");
     }
     [HttpPost]
     public async Task<ActionResult> EditRole(EditRoleModel model)
@@ -83,7 +89,7 @@ public class RolesController : Controller
                 IdentityResult result = await RoleManager.UpdateAsync(role);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("RoleList");
                 }
                 else
                 {
@@ -101,7 +107,7 @@ public class RolesController : Controller
         {
             IdentityResult result = await RoleManager.DeleteAsync(role);
         }
-        return RedirectToAction("Index");
+        return RedirectToAction("RoleList");
     }
 
     public ViewResult GetUsers()
@@ -163,9 +169,9 @@ public class RolesController : Controller
             IdentityResult result = await UserManager.DeleteAsync(user);
             if (result.Succeeded)
             {
-                return RedirectToAction("GetUsers", "Roles");
+                return RedirectToAction("GetUsers", "Admin");
             }
         }
-        return RedirectToAction("GetUsers", "Roles");
+        return RedirectToAction("GetUsers", "Admin");
     }
 }

@@ -21,18 +21,35 @@
                     @Html.ActionLink("Home", "Index", "Home")
                 </li>
                 <li>
-                    @Html.ActionLink("Cart"," Index", "Home")
+                    @if (ViewContext.HttpContext.User.IsInRole("user"))
+                    {
+                        @Html.ActionLink("Cart", " Index", "Home")
+                    }
+                </li>
+                <li>
+                    @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
+                    {
+                        @Html.ActionLink("Account", "Edit", "Account")
+                    }
+                </li>
+                <li>
+                    @if (ViewContext.HttpContext.User.IsInRole("admin"))
+                    {
+                        @Html.ActionLink("Admin", "Index", "Admin")
+                    }
                 </li>
                 <li>
                     @Html.ActionLink("About", "About", "Home")
                 </li>
                 <li>
-                    @Html.ActionLink("Account", "Edit", "Account")
+                    @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
+                    {
+                        @Html.ActionLink("Exit", "Logout", "Account")
+                    }
                 </li>
-                
             </ul>
         </div>
-        </div>
+    </div>
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -43,11 +60,15 @@
                 </button>
                 <div class="col-md-8 col-md-pull-8">
                     @Html.ActionLink("Афиша", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                    </div>
                 </div>
+            </div>
             <div class="navbar-collapse collapse">
-                <a href="#menu-toggle" class="btn btn-secondary btn-menu" id="menu-toggle">Menu</a>
-                
+                @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
+                {
+                    <a href="#menu-toggle" class="btn btn-secondary btn-menu" id="menu-toggle">Menu</a>
+
+                    <a href="@Url.Action("Logout", "Account") " class="btn btn-secondary btn-exit">Выйти</a>
+                }
             </div>
         </div>
     </div>
@@ -60,10 +81,10 @@
     </div>
 
     <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
     </script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

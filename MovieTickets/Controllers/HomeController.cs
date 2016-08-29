@@ -25,6 +25,7 @@ namespace MovieTickets.Controllers
             }
         }
         MovieTicketContext db = new MovieTicketContext();
+
         public ViewResult Index(string sortOrder, string searchString)
         {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name desc" : "";
@@ -55,6 +56,7 @@ namespace MovieTickets.Controllers
             return View(movies.ToList());
         }
 
+        [Authorize(Roles = "moderator")]
         public ActionResult Edit(int id = 0)
         {
             Movie movie = db.Movies.Find(id);
@@ -82,6 +84,7 @@ namespace MovieTickets.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "moderator")]
         public ActionResult Create()
         {
             return View();
@@ -104,6 +107,7 @@ namespace MovieTickets.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "moderator")]
         public ActionResult Delete(int id)
         {
             Movie movie = db.Movies.Find(id);

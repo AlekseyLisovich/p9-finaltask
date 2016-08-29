@@ -35,14 +35,21 @@
 
 @using (Html.BeginForm("Details", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
 {
-    <div class="form-group">
-        <div class="editor-field col-md-12">
-            @Html.TextAreaFor(m => m.NewComment.Text, 5, 40, new { @class = "form-control" })
+    if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
+    {
+        <div class="form-group">
+            <div class="editor-field col-md-12">
+                @Html.TextAreaFor(m => m.NewComment.Text, 5, 40, new { @class = "form-control" })
+            </div>
         </div>
-    </div>
-    <div class="form-group col-md-12">
-        <input type="submit" class="btn btn-default" value="Отправить" />
-    </div>
+        <div class="form-group col-md-12">
+            <input type="submit" class="btn btn-default" value="Отправить" />
+        </div>
+    }
+    else
+    {
+        <div>@Html.ActionLink("Войдите", "Login", "Account"), чтобы оставить отзыв</div>
+    }
     <h2>Комментарии пользователей</h2>
     <div>
         @foreach (var c in Model.Comment)
@@ -50,7 +57,7 @@
             <br />
             <h6>
                 @Html.DisplayFor(comment => c.UserName)
-                @Html.DisplayFor(comment => c.PublishDate )
+                @Html.DisplayFor(comment => c.PublishDate)
             </h6>
             <p class="text-comment">
                 @Html.DisplayFor(comment => c.Text)

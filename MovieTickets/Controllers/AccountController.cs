@@ -44,7 +44,7 @@ namespace MovieTickets.Controllers
                 {
                     foreach (string error in result.Errors)
                     {
-                        ModelState.AddModelError("", error);
+                        ModelState.AddModelError("", "asdasd");
                     }
                 }
             }
@@ -98,6 +98,10 @@ namespace MovieTickets.Controllers
             AuthenticationManager.SignOut();
             return RedirectToAction("Login");
         }
+
+        
+        [Authorize(Roles = "admin, moderator, user")]
+       
         public async Task<ActionResult> Edit()
         {
             User user = await UserManager.FindByEmailAsync(User.Identity.Name);

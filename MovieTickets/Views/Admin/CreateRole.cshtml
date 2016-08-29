@@ -1,14 +1,12 @@
-﻿@model MovieTickets.Models.Account.EditRoleModel
+﻿@model MovieTickets.Models.Account.CreateRoleModel
 
-<h2>Редактирование роли</h2>
+<h2>Добавление роли</h2>
 
-@using (Html.BeginForm("Edit", "Roles", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("CreateRole", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
 
     <div>
-        @Html.ValidationSummary(true, "")
-        @Html.HiddenFor(model => model.Id)
         <div class="form-group">
             <div class="editor-label">
                 @Html.LabelFor(m => m.Name, "Название", new { @class = "col-md-2 control-label" })
