@@ -204,9 +204,19 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608301054188_InitialCreate.cs" />
+    <Compile Include="Migrations\201608301054188_InitialCreate.Designer.cs">
+      <DependentUpon>201608301054188_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608301347165_Cinema.cs" />
+    <Compile Include="Migrations\201608301347165_Cinema.Designer.cs">
+      <DependentUpon>201608301347165_Cinema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\ApplicationRoleManager.cs" />
     <Compile Include="Models\Account\ApplicationUserManager.cs" />
     <Compile Include="Models\Account\CreateRoleModel.cs" />
@@ -214,6 +224,7 @@
     <Compile Include="Models\Account\EditRoleModel.cs" />
     <Compile Include="Models\Account\LoginModel.cs" />
     <Compile Include="Models\Account\RegisterModel.cs" />
+    <Compile Include="Models\Cinema.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MovieComment.cs" />
     <Compile Include="Models\MovieTicketContext.cs" />
@@ -286,8 +297,19 @@
     <Content Include="Views\Admin\GetUsers.cshtml" />
     <Content Include="Views\Admin\EditUserRole.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Session\Index.cshtml" />
+    <Content Include="Views\Session\CreateCinema.cshtml" />
+    <Content Include="Views\Session\DeleteCinema.cshtml" />
+    <Content Include="Views\Session\EditCinema.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201608301054188_InitialCreate.resx">
+      <DependentUpon>201608301054188_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608301347165_Cinema.resx">
+      <DependentUpon>201608301347165_Cinema.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />

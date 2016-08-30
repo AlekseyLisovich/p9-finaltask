@@ -39,6 +39,12 @@
                     }
                 </li>
                 <li>
+                    @if (ViewContext.HttpContext.User.IsInRole("moderator"))
+                    {
+                        @Html.ActionLink("Cinema", "Index", "Session")
+                    }
+                </li>
+                <li>
                     @Html.ActionLink("About", "About", "Home")
                 </li>
                 <li>

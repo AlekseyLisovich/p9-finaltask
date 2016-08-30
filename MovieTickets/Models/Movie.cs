@@ -12,6 +12,7 @@ namespace MovieTickets.Models
         {
             this.OrderHistories = new HashSet<OrderHistory>();
             this.MovieComments = new HashSet<MovieComment>();
+            this.Cinemas = new HashSet<Cinema>();
         }
 
         public int ID { get; set; }
@@ -27,6 +28,7 @@ namespace MovieTickets.Models
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
         public double Rating { get; set; }
+        public virtual ICollection<Cinema> Cinemas { get; set; }
 
         public virtual ICollection<MovieComment> MovieComments { get; set; }
         public virtual ICollection<OrderHistory> OrderHistories { get; set; }

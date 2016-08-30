@@ -92,7 +92,6 @@ namespace MovieTickets.Controllers
         [HttpPost]
         public ActionResult Create(Movie movie, HttpPostedFileBase uploadImage)
         {
-            var a = HttpContext;
             if (movie.Description != null && movie.Name != null && uploadImage != null)
             {
                 using (var binaryReader = new BinaryReader(uploadImage.InputStream))
@@ -131,12 +130,11 @@ namespace MovieTickets.Controllers
         }
         [HttpGet]
         public ActionResult Details(int id)
-        {
-            
+        {          
             Movie m = db.Movies.Find(id);
             MovieViewModel model = new MovieViewModel();
-            model.Movie = new Movie {Name = m.Name, ID = m.ID, Date = m.Date, Description = m.Description, Image = m.Image, MovieComments = m.MovieComments
-            , Price =m.Price, Rating = m.Rating };
+            model.Movie = new Movie { Name = m.Name, ID = m.ID, Date = m.Date, Description = m.Description, Image = m.Image, MovieComments = m.MovieComments
+            , Price = m.Price, Rating = m.Rating };
             model.Comment = m.MovieComments;
             model.NewComment = new MovieComment();
 
