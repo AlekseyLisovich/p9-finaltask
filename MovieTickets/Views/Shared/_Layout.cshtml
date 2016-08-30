@@ -65,9 +65,13 @@
             <div class="navbar-collapse collapse">
                 @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
                 {
-                    <a href="#menu-toggle" class="btn btn-secondary btn-menu" id="menu-toggle">Menu</a>
+                <a href="#menu-toggle" class="btn btn-secondary btn-menu" id="menu-toggle">Menu</a>
 
-                    <a href="@Url.Action("Logout", "Account") " class="btn btn-secondary btn-exit">Выйти</a>
+                <a href="@Url.Action("Logout", "Account") " class="btn btn-secondary btn-exit">Выйти</a>
+                }
+                else
+                {
+                <a href="@Url.Action("Login", "Account") " class="btn btn-secondary btn-exit">Войти</a>
                 }
             </div>
         </div>

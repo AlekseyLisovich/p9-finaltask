@@ -226,6 +226,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\movieTicketsDataBase.mdf" />
+    <Content Include="App_Data\movieTicketsDataBase_log.ldf">
+      <DependentUpon>movieTicketsDataBase.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\assets\photo\Films.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -283,9 +287,7 @@
     <Content Include="Views\Admin\EditUserRole.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
