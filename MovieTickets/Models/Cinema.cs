@@ -11,7 +11,7 @@ namespace MovieTickets.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string Sessions { get; set; }
-        public ICollection<Movie> Movies { get; set; }
+        public virtual ICollection<Movie> Movies { get; set; }
         public Cinema()
         {
             Movies = new List<Movie>();

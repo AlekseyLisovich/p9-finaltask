@@ -1,0 +1,41 @@
+﻿@model MovieTickets.Models.Cinema
+
+@{
+    ViewBag.Title = "Добавление Кинотеатра";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Добавление нового Кинотеатра</h2>
+
+@using (Html.BeginForm("CreateCinema", "Session", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+{
+    <fieldset>
+        @Html.HiddenFor(m => m.Id )
+        <div class="form-group">
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Name, "Название", new { @class = "col-md-2 control-label" })
+            </div>
+            <div class="col-md-10 editor-field">
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Description, "Описание", new { @class = "col-md-2 control-label" })
+            </div>
+            <div class="col-md-10 editor-field">
+                @Html.TextAreaFor(m => m.Description, new { cols = 100, @rows = 5, @class = "form-control" })
+            </div>
+        </div>
+                 
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Отправить" />
+            </div>
+        </div>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("К списку фильмов", "Index", "Home")
+</div>
+

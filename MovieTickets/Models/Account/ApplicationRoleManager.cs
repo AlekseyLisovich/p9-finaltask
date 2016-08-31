@@ -6,7 +6,7 @@ using MovieTickets.Models;
 
 namespace MovieTickets.Models.Account
 {
-    class ApplicationRoleManager : RoleManager<Role>
+    public class ApplicationRoleManager : RoleManager<Role>
     {
         public ApplicationRoleManager(RoleStore<Role> store)
                     : base(store)

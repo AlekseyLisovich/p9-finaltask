@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Редактировать фильм";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model MovieTickets.Models.Movie
+<h2>Фильм: @Model.Name</h2>
+@using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+{
+    <fieldset>
+        @Html.HiddenFor(m => m.ID)
+        <div class="form-group">
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Name, "Название", new { @class = "col-md-2 control-label" })
+            </div>
+            <div class="col-md-10 editor-field">
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Description, "Описание", new { @class = "col-md-2 control-label" })
+            </div>
+            <div class="col-md-10 editor-field">
+                @Html.TextAreaFor(m => m.Description, new { cols = 100, @rows = 5, @class = "form-control" })
+            </div>
+        </div>
+        <p>
+            @Html.LabelFor(m => m.Image, "Загрузите постер фильма на сервер")
+        <p>
+            <input type="file" name="uploadImage" />
+        </p>
+        <div class="form-group">
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Price, "Цена", new { @class = "col-md-2 control-label" })
+            </div>
+            <div class="col-md-10 editor-field">
+                @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Date, "Дата", new { @class = "col-md-2 control-label" })
+            </div>
+            <div class="col-md-10 editor-field">
+                @Html.TextBoxFor(m => m.Date, new { @class = "date" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Rating, "Рейтинг", new { @class = "col-md-2 control-label" })
+            </div>
+            <div class="col-md-10 editor-field">
+                @Html.TextBoxFor(m => m.Rating, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Отправить" />
+            </div>
+        </div>
+    </fieldset>
+}
+

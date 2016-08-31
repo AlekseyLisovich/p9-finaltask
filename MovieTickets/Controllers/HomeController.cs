@@ -15,17 +15,8 @@ using System.Threading.Tasks;
 
 namespace MovieTickets.Controllers
 {
-    public class HomeController : Controller
-    {
-        private ApplicationUserManager UserManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-        }
-        MovieTicketContext db = new MovieTicketContext();
-
+    public class HomeController : BaseController
+    {             
         public ViewResult Index(string sortOrder, string searchString)
         {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name desc" : "";
@@ -119,11 +110,17 @@ namespace MovieTickets.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Movie movie = db.Movies.Find(id);
+            Movie movie = db.Movies.Include(m => m.MovieComments).SingleOrDefault(m => m.ID == id);
+            foreach (var cart in movie.MovieComments.ToList())
+            {
+                db.MovieComments.Remove(cart);
+            }
+                  
             if (movie == null)
             {
                 return HttpNotFound();
             }
+            
             db.Movies.Remove(movie);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -136,6 +133,10 @@ namespace MovieTickets.Controllers
             model.Movie = new Movie { Name = m.Name, ID = m.ID, Date = m.Date, Description = m.Description, Image = m.Image, MovieComments = m.MovieComments
             , Price = m.Price, Rating = m.Rating };
             model.Comment = m.MovieComments;
+            foreach (var cinema in m.Cinemas)
+            {
+                model.cinema += cinema.Name + " ";
+            }
             model.NewComment = new MovieComment();
 
             if (model == null)

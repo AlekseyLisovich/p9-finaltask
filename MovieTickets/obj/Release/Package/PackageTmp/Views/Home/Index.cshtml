@@ -1,0 +1,72 @@
+﻿@model IEnumerable<MovieTickets.Models.Movie>
+@{
+    ViewBag.Title = "Список фильмов";
+}
+
+<div class="bg"></div>
+<div class="jumbotron">
+    <h1>Фильмы онлайн</h1>
+</div>
+<div class="container">
+    <h2>Сегодня в прокате</h2>
+    <p>
+        @if (ViewContext.HttpContext.User.IsInRole("moderator"))
+        {
+            @Html.ActionLink("Добавить фильм", "Create")
+        }
+    </p>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <p>
+
+            @Html.TextBox("searchString", null, new { @class = "form-control textbox-search" })
+            <input type="submit" class="btn btn-default btn-search" value="Search" />
+        </p>
+    }
+    <table class="table table-striped">
+        <tr>
+            <th class="text-center">Фото</th>
+            <th class="text-center">Название фильма</th>
+            <th class="text-center">Цена</th>
+            <th class="text-center">Дата</th>
+            <th class="text-center">Рейтинг</th>
+            <th class="text-center"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("Details", "Home", new { id = item.ID } ) ">
+                        @Html.Raw("<img src=\"data:image/jpeg;base64,"
+                                + Convert.ToBase64String(item.Image) + "\" />")
+                    </a>
+                </td>
+                <td class="text-center">
+                    <a href="@Url.Action("Details", "Home", new { id = item.ID } ) ">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </a>
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+
+                <td>
+                    @if (ViewContext.HttpContext.User.IsInRole("moderator"))
+                    {
+                        @Html.ActionLink("Редактировать", "Edit", new { id = item.ID }) 
+
+                        @Html.ActionLink("Удалить", "Delete", new { id = item.ID })
+                    }
+
+                </td>
+            </tr>
+                    }
+    </table>
+</div>

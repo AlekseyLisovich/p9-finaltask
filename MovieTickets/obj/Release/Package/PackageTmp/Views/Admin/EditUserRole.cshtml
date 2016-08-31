@@ -1,0 +1,37 @@
+﻿@model MovieTickets.Models.UserRole
+
+@{
+    ViewBag.Title = "Роли";
+}
+
+<h2>Пользователь</h2>
+@using (Html.BeginForm("EditUserRole", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+{
+    <table class="table table-striped">
+        <tr>
+            <th class="text-center">Имя</th>
+            <th class="text-center">Email</th>
+            <th class="text-center">Роль</th>
+            <th class="text-center"></th>
+        </tr>
+        
+        <tr>
+            <td class="role-details">
+                @Html.DisplayFor(m => m.User.UserName)
+            </td>
+            <td class="role-details">
+                @Html.DisplayFor(m => m.User.Email)
+            </td>
+            @foreach (var roles in Model.Roles)
+            {
+                <td class="col-md-offset-2 col-md-2">
+                    @Html.TextBoxFor(r => roles, new { @class = "form-control" })
+                </td>
+            }
+            <td class="role-details">
+                <input type="submit" class="btn btn-default" value="Отправить" />
+            </td>
+        </tr>
+    </table>
+}
+

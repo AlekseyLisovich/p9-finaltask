@@ -1,0 +1,31 @@
+﻿@model IEnumerable<MovieTickets.Models.Role >
+
+@{
+    ViewBag.Title = "Роли";
+}
+
+<h2>Роли</h2>
+@Html.ActionLink("Create", "CreateRole")
+<br /> 
+<table class="table">
+    <tr>
+        <th>Название</th>
+        <th>Описание</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name </td>
+            <td>@item.Description</td>
+            <td>             
+                @Html.ActionLink("Edit", "EditRole", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "DeleteRole", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+<div>
+    @Html.ActionLink("К панели администратора", "Index")
+</div>

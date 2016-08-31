@@ -9,6 +9,7 @@ namespace MovieTickets.Models
     {
         public Movie Movie { get; set; }
         public IEnumerable<MovieComment> Comment { get; set; }
+        public string cinema;
         public MovieComment NewComment { get; set; }
     }
 }

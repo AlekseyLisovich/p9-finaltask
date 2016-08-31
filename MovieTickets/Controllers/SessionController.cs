@@ -14,12 +14,11 @@ using System.Data.Entity;
 namespace MovieTickets.Controllers
 {
     [Authorize(Roles = "moderator")]
-    public class SessionController : Controller
+    public class SessionController : BaseController
     {
-        MovieTicketContext db = new MovieTicketContext();
         public ActionResult Index()
         {
-            return View(db.Cinamas);
+            return View(db.Cinemas);
         }
 
         [HttpGet]
@@ -31,7 +30,7 @@ namespace MovieTickets.Controllers
         [HttpPost]
         public ActionResult CreateCinema(Cinema cinema)
         {
-            db.Cinamas.Add(cinema);
+            db.Cinemas.Add(cinema);
             db.SaveChanges();
 
             return RedirectToAction("Index");
@@ -39,7 +38,7 @@ namespace MovieTickets.Controllers
         [HttpGet]
         public ActionResult EditCinema(int id = 0)
         {
-            Cinema cinema = db.Cinamas.Find(id);
+            Cinema cinema = db.Cinemas.Find(id);
             if (cinema == null)
             {
                 return HttpNotFound();
@@ -58,7 +57,7 @@ namespace MovieTickets.Controllers
         [HttpGet]
         public ActionResult DeleteCinema(int id)
         {
-            Cinema cinema = db.Cinamas.Find(id);
+            Cinema cinema = db.Cinemas.Find(id);
             if (cinema == null)
             {
                 return HttpNotFound();
@@ -68,14 +67,58 @@ namespace MovieTickets.Controllers
         [HttpPost, ActionName("DeleteCinema")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Cinema cinema = db.Cinamas.Find(id);
+            Cinema cinema = db.Cinemas.Find(id);
             if (cinema == null)
             {
                 return HttpNotFound();
             }
-            db.Cinamas.Remove(cinema);
+            db.Cinemas.Remove(cinema);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult SelectMovie(int id)
+        {
+            Cinema cinema = db.Cinemas.Find(id);
+            
+            MovieCinema model = new MovieCinema();
+            model.Cinema = cinema;
+            model.Movies = db.Movies;
+
+            if (model == null)
+            {
+                return HttpNotFound();
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult AddMovie(int cinemaId, int movieId)
+        {
+            Cinema cinema = db.Cinemas.Find(cinemaId);
+            Movie movie = db.Movies.Find(movieId);
+
+            cinema.Movies.Add(movie);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult MovieList(int id)
+        {
+            Cinema cinema = db.Cinemas.Find(id);
+
+            MovieCinema model = new MovieCinema();
+            model.Cinema = cinema;
+            model.Movies = cinema.Movies;
+
+            if (model == null)
+            {
+                return HttpNotFound();
+            }
+            return View(model);
         }
     }
 }

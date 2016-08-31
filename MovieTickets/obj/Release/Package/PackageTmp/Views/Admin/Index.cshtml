@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Панель администратора";
+}
+
+<h2>Панель администратора</h2>
+<table class="table table-striped">
+    <tr>
+        <td class="text-center"><a href="@Url.Action("GetUsers", "Admin" ) "><input type="button" class="btn btn-default" value="Список пользователей" /></a></td>
+        <td class="text-center"><a href="@Url.Action("RoleList", "Admin" ) "><input type="button" class="btn btn-default" value="Список ролей" /></a></td>
+        <td class="text-center"><a href="@Url.Action("GetUsers", "Admin" ) "><input type="button" class="btn btn-default" value="Список кинотеатров" /></a></td>
+        <td class="text-center"></td>
+    </tr>
+    </table>
+   

@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model MovieTickets.Models.Movie
+<h2>Удаление фильма</h2>
+<dl>
+    <dt>Название</dt>
+    <dd>
+        @Html.DisplayFor(m => m.Name)
+    </dd>
+    <dt>Фото</dt>
+    <dd>
+        @Html.Raw("<img src=\"data:image/jpeg;base64,"
+                                + Convert.ToBase64String(Model.Image) + "\" />")
+    </dd>
+    <dt>Цена</dt>
+    <dd>
+        @Html.DisplayFor(m => m.Price)
+    </dd>
+
+    <dt>Рейтинг</dt>
+    <dd>
+        @Html.DisplayFor(m => m.Rating)
+    </dd>
+</dl>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" class="btn btn-default" value="Удалить" />
+}
+

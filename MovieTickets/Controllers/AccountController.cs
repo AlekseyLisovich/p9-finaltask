@@ -13,16 +13,8 @@ using System.Security.Claims;
 
 namespace MovieTickets.Controllers
 {
-    public class AccountController : Controller
-    {
-        private ApplicationUserManager UserManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-        }
-
+    public class AccountController : BaseController
+    {     
         public ActionResult Register()
         {
             return View();
@@ -44,20 +36,12 @@ namespace MovieTickets.Controllers
                 {
                     foreach (string error in result.Errors)
                     {
-                        ModelState.AddModelError("", "asdasd");
+                        ModelState.AddModelError("", error);
                     }
                 }
             }
             return View(model);
-        }
-
-        private IAuthenticationManager AuthenticationManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().Authentication;
-            }
-        }
+        }     
 
         public ActionResult Login(string returnUrl)
         {
@@ -98,7 +82,6 @@ namespace MovieTickets.Controllers
             AuthenticationManager.SignOut();
             return RedirectToAction("Login");
         }
-
         
         [Authorize(Roles = "admin, moderator, user")]
        
@@ -124,9 +107,7 @@ namespace MovieTickets.Controllers
                 user.PhoneNumber = model.PhoneNumber;
                 string oldPassword = model.Password;
                 if (oldPassword != null && model.NewPassword != null)
-                     await UserManager.ChangePasswordAsync(user.Id, oldPassword, model.NewPassword);
-
-                
+                     await UserManager.ChangePasswordAsync(user.Id, oldPassword, model.NewPassword);               
 
                 IdentityResult result = await UserManager.UpdateAsync(user);
                 if (result.Succeeded)

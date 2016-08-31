@@ -1,0 +1,26 @@
+﻿@model MovieTickets.Models.MovieCinema
+@{
+    ViewBag.Title = "Список фильмов";
+}
+
+<div class="container">
+    <h2>Список фильмов</h2>
+
+    <table class="table table-striped">
+
+        @foreach (var movie in Model.Movies)
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("AddMovie", "Session", new { cinemaId = Model.Cinema.Id, movieId = movie.ID })">@movie.Name</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+
+
+
+
