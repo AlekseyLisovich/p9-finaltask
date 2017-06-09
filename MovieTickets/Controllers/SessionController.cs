@@ -10,10 +10,11 @@ using MovieTickets.Models;
 using MovieTickets.Models.Account;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
+using System.IO;
 
 namespace MovieTickets.Controllers
 {
-    [Authorize(Roles = "moderator")]
+    [Authorize(Roles = "admin")]
     public class SessionController : BaseController
     {
         public ActionResult Index()
@@ -28,11 +29,19 @@ namespace MovieTickets.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult CreateCinema(Cinema cinema)
+        public ActionResult CreateCinema(Cinema cinema, HttpPostedFileBase uploadImage)
         {
-            db.Cinemas.Add(cinema);
-            db.SaveChanges();
+            if (cinema.Description != null && cinema.Name != null && uploadImage != null)
+            {
+                using (var binaryReader = new BinaryReader(uploadImage.InputStream))
+                {
+                    cinema.Image = binaryReader.ReadBytes(uploadImage.ContentLength);
+                }
 
+                db.Cinemas.Add(cinema);
+                db.SaveChanges();
+            }
+           
             return RedirectToAction("Index");
         }
         [HttpGet]

@@ -1,0 +1,27 @@
+﻿@model MovieTickets.Models.Cinema
+@{
+    ViewBag.Title = "Кинотеатр";
+}
+
+<style>
+    body {
+        background-image: url(../../Content/assets/photo/bg.jpg);
+    }
+</style>
+<div class="film-details">
+    <h2>Фильм: @Model.Name</h2>
+
+    <div class="movie-details">
+        @Html.HiddenFor(m => m.Image)
+        <p class="photo-details">
+            @Html.Raw("<img class='photo - details' src=\"data:image/jpeg;base64,"
+                                + Convert.ToBase64String(Model.Image) + "\" />")
+        </p>
+        <p class="text-details">
+            @Html.LabelFor(m => m.Description, "Описание")
+            <br />
+            @Html.DisplayFor(m => m.Description)
+        </p>
+    </div>
+</div>
+

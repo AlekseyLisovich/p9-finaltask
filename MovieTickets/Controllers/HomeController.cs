@@ -22,7 +22,7 @@ namespace MovieTickets.Controllers
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "Date desc" : "Date";
             var movies = from m in db.Movies
-                           select m;
+                         select m;
             if (!String.IsNullOrEmpty(searchString))
             {
                 movies = movies.Where(s => s.Name.ToUpper().Contains(searchString.ToUpper())
@@ -158,6 +158,17 @@ namespace MovieTickets.Controllers
             db.SaveChanges();
 
             return RedirectToAction("Details");
+        }
+
+        [HttpGet]
+        public ActionResult ShowCinema(int id)
+        {
+            Cinema cinema = db.Cinemas.Find(id);
+            if (cinema == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cinema);
         }
     }
 }

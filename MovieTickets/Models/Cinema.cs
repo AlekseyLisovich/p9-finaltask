@@ -9,6 +9,7 @@ namespace MovieTickets.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public byte[] Image { get; set; }
         public string Description { get; set; }
         public string Sessions { get; set; }
         public virtual ICollection<Movie> Movies { get; set; }

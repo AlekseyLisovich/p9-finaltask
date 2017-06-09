@@ -250,6 +250,10 @@
     <Compile Include="Migrations\201608311045218_dv.Designer.cs">
       <DependentUpon>201608311045218_dv.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705271514433_MigrateDB.cs" />
+    <Compile Include="Migrations\201705271514433_MigrateDB.Designer.cs">
+      <DependentUpon>201705271514433_MigrateDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\ApplicationRoleManager.cs" />
     <Compile Include="Models\Account\ApplicationUserManager.cs" />
@@ -272,16 +276,24 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\movieTicketsDataBase.mdf" />
-    <Content Include="App_Data\movieTicketsDataBase_log.ldf">
-      <DependentUpon>movieTicketsDataBase.mdf</DependentUpon>
-    </Content>
+    <Content Include="Content\assets\photo\alien.jpg" />
+    <Content Include="Content\assets\photo\artur.jpg" />
+    <Content Include="Content\assets\photo\bg.jpg" />
+    <Content Include="Content\assets\photo\big.jpg" />
+    <Content Include="Content\assets\photo\dog%27slife.jpg" />
+    <Content Include="Content\assets\photo\dospexi_boga.jpg" />
     <Content Include="Content\assets\photo\Films.jpg" />
+    <Content Include="Content\assets\photo\GardianOfGalaxy.jpg" />
+    <Content Include="Content\assets\photo\IandYou.jpg" />
+    <Content Include="Content\assets\photo\OneTimeInGermany.jpg" />
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\fonts\slick.svg" />
+    <Content Include="Content\slick-theme.css" />
+    <Content Include="Content\slick5.css" />
+    <Content Include="Content\login.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\Site9.css" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -290,8 +302,13 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="apiapp.json" />
+    <Content Include="Content\fonts\slick.eot" />
+    <Content Include="Content\fonts\slick.ttf" />
+    <Content Include="Content\fonts\slick.woff" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Properties\PublishProfiles\Movie.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\login.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -304,6 +321,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\slick.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -340,6 +358,7 @@
     <Content Include="Views\Session\EditCinema.cshtml" />
     <Content Include="Views\Session\SelectMovie.cshtml" />
     <Content Include="Views\Session\MovieList.cshtml" />
+    <Content Include="Views\Home\ShowCinema.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201608301054188_InitialCreate.resx">
@@ -351,11 +370,17 @@
     <EmbeddedResource Include="Migrations\201608311045218_dv.resx">
       <DependentUpon>201608311045218_dv.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705271514433_MigrateDB.resx">
+      <DependentUpon>201705271514433_MigrateDB.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -179,8 +179,8 @@ input[type="checkbox"].input-validation-error {
     font-size: 18pt;
 }
 img{
-    width: 120px;
-  object-fit: cover;
+    width: 100%;
+    object-fit: cover;
 }
 .role-details{
     text-align:center;
@@ -190,7 +190,7 @@ img{
     height : 420px;
 }
 
-.photo-details img{
+.photo-details{
     width : 300px;
     float: left;
 }
@@ -201,6 +201,11 @@ p.photo-details{
 }
 .text-center{
     font-size: 20pt;
+}
+
+.text-center-bg{
+    position: relative;
+    top: 40px;
 }
 .textbox-search{
     float:left;
@@ -228,60 +233,88 @@ p.photo-details{
     background-color: #eeeeee;
     font-size: 16pt;
 }
+.photo-scroll{
+    width: 200px !important;
+}
 
+.slick-p {
+    left: -25px;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 20px solid blue;
+}
+
+.slick-n {
+    right: -25px;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid blue;
+}
+
+.table-bg {
+    background-color: #F0FFFF;
+}
+.film-details{
+    background-color: white;
+    padding: 10px;
+}
 @media screen and (max-width: 1920px) {
   .text-center{font-size: 20pt;}
-  img{width: 120px;}
+  .photo-list{width: 120px;}
   .text-details{font-size: 18pt;}
-  .photo-details img { width: 300px;}
+  .photo-details{ width: 300px;}
   p.photo-details{ width: 300px; }
   .movie-details{ height : 480px; }
 }
 @media screen and (max-width: 1680px) {
   .text-center{font-size: 18pt;}
-  img{width: 100px;}
+  .photo-list{width: 100px;}
   .text-details{font-size: 16pt;}
-  .photo-details img { width: 250px; }
+  .photo-details{ width: 250px; }
   p.photo-details{ width: 250px; }
   .movie-details{ height : 420px; }
 }
 @media screen and (max-width: 1280px) {
   .text-center{font-size: 16pt;}
-  img{width: 90px;}
+  .photo-list{width: 90px;}
   .text-details{font-size: 14pt;}
-  .photo-details img { width: 200px; }
+  .photo-details{ width: 200px; }
   p.photo-details{ width: 200px; }
   .movie-details{ height : 420px; }
 }
 @media screen and (max-width: 1024px) {
   .text-center{font-size: 14pt;}
-  img{width: 80px;}
+  .photo-list{width: 80px;}
   .text-details{font-size: 11pt;}
-  .photo-details img { width: 170px; }
+  .photo-details{ width: 170px; }
   p.photo-details{ width: 170px; }
   .movie-details{ height : 300px; }
 }
 @media screen and (max-width: 768px) {
   .text-center{font-size: 12pt;}
-  img{width: 70px;}
+  .photo-list{width: 70px;}
   .text-details{font-size: 11pt;}
-  .photo-details img { width: 150px; }
+  .photo-details{ width: 150px; }
   p.photo-details{ width: 150px; }
   .movie-details{ height : 300px; }
 }
 @media screen and (max-width: 425px) {
   .text-center{font-size: 12pt;}
-  img{width: 70px;}
+  .photo-list{width: 70px;}
   .text-details{font-size: 9pt;}
-  .photo-details img { width: 150px; }
+  .photo-details{ width: 150px; }
   p.photo-details{ width: 150px; }
   .movie-details{ height : 350px; }
 }
 @media screen and (max-width: 320px) {
   .text-center{font-size: 12pt;}
-  img{width: 70px;}
+  .photo-list{width: 70px;}
   .text-details{font-size: 9pt;}
-  .photo-details img { width: 150px; }
+  .photo-details{ width: 150px; }
   p.photo-details{ width: 150px; }
   .movie-details{ height : 400px; }
 }

@@ -4,41 +4,61 @@
     ViewBag.Title = "Login";
 }
 
-<h2>Вход на сайт</h2>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
+<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+<link rel="stylesheet" href="~/Content/login.css">
 
+<div class="pen-title">
+    <h1>Login Form</h1><span></span>
+</div>
 
-@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary();
-    <div>
-
-        <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
-        <div class="form-group">
-            <div class="editor-label">
-                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-            </div>
-            <div class="col-md-10 editor-field">
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Email)
-            </div>
+<div class="container">
+    <div class="card"></div>
+    <div class="card">
+    <h1 class="title">Login</h1>
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary();
+        <div class="input-container">
+            @Html.TextBoxFor(m => m.Email, new { @type = "#{type}", @id = "#{label}" })          
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10 ">
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Password)
-            </div>
-        </div>
+                <div class="input-container">
+                    @Html.PasswordFor(m => m.Password)
+                </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" class="btn btn-default" value="Login" />
-            </div>
-        </div>
-    </div>
-    <div>
-        @Html.ActionLink("Register", "Register")
-    </div>
-}
+                <div class="button-container">
+                    <button><span>Go</span></button>
+                </div>
+                <div class="footer">@Html.ActionLink("Register", "Register")</div>
+                
+    }
+        <div class="card alt">
+                    <div class="toggle"></div>
+                    <h1 class="title">
+                        Register
+                        <div class="close"></div>
+                    </h1>
+                    <form>
+                        <div class="input-container">
+                            <input type="#{type}" id="#{label}" required="required" />
+                            <label for="#{label}">Username</label>
+                            <div class="bar"></div>
+                        </div>
+                        <div class="input-container">
+                            <input type="#{type}" id="#{label}" required="required" />
+                            <label for="#{label}">Password</label>
+                            <div class="bar"></div>
+                        </div>
+                        <div class="input-container">
+                            <input type="#{type}" id="#{label}" required="required" />
+                            <label for="#{label}">Repeat Password</label>
+                            <div class="bar"></div>
+                        </div>
+                        <div class="button-container">
+                            <button><span>Next</span></button>
+                        </div>
+                    </form>
+                </div>

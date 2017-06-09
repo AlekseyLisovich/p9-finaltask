@@ -20,12 +20,17 @@ namespace MovieTickets
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                      "~/Scripts/slick.js",
+                      "~/Scripts/login.js",
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/slick5.css",
+                      "~/Content/slick-theme.css",
                       "~/Content/bootstrap.css",
-                      "~/Content/Site.css"));
+                      "~/Content/Site9.css"
+                      ));
         }
     }
 }

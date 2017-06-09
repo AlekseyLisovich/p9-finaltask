@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MovieTickets.BundleConfig" Collapsed="true">
+    <Position X="4" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\BundleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.FilterConfig" Collapsed="true">
+    <Position X="7.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\FilterConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.RouteConfig" Collapsed="true">
+    <Position X="0.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.SwaggerConfig" Collapsed="true">
+    <Position X="4" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\SwaggerConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.MvcApplication" Collapsed="true">
+    <Position X="2.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.App_Start.Startup" Collapsed="true">
+    <Position X="2.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\Startup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.Controllers.AccountController">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAABAAACAAAQAAAAAAA=</HashCode>
+      <FileName>Controllers\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.Controllers.AdminController">
+    <Position X="2.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YAAAAAAAAAAAAACEAAAAACAAAAAAAAAAAAEBAAAQAAA=</HashCode>
+      <FileName>Controllers\AdminController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.Controllers.BaseController" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAACAQAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\BaseController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.Controllers.HomeController">
+    <Position X="5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAACAAAAAAAAAAAEAAEACAAEAACAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.Controllers.SessionController">
+    <Position X="7.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAQACAEAAAAAAQAAAAAAAAAAEAEAQAAAA=</HashCode>
+      <FileName>Controllers\SessionController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.Migrations.InitialCreate" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201608301054188_InitialCreate.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MovieTickets.Migrations.Cinema" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201608301347165_Cinema.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MovieTickets.Migrations.dv" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201608311045218_dv.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MovieTickets.Migrations.MigrateDB" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201705271514433_MigrateDB.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MovieTickets.Migrations.Configuration" Collapsed="true">
+    <Position X="9.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Migrations\Configuration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.Models.Account.ApplicationRoleManager" Collapsed="true">
+    <Position X="0.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Account\ApplicationRoleManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.Models.Account.CreateRoleModel" Collapsed="true">
+    <Position X="0.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Account\CreateRoleModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.Models.Account.EditModel" Collapsed="true">
+    <Position X="4" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAABAAQAQAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Account\EditModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.Models.Account.EditRoleModel" Collapsed="true">
+    <Position X="5.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Account\EditRoleModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.Models.Account.LoginModel" Collapsed="true">
+    <Position X="0.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Account\LoginModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.Models.Account.RegisterModel" Collapsed="true">
+    <Position X="7.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAgAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Account\RegisterModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApplicationUserManager" Collapsed="true">
+    <Position X="2.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Account\ApplicationUserManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.Models.Cinema" Collapsed="true">
+    <Position X="5.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgEAAAACAAAAQAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Cinema.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.Models.Movie" Collapsed="true">
+    <Position X="4" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAggAAAAAAAAAQAAAAACBEBAgAAAAAAEAA=</HashCode>
+      <FileName>Models\Movie.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.Models.MovieCinema" Collapsed="true">
+    <Position X="5.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\MovieCinema.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.Models.MovieComment" Collapsed="true">
+    <Position X="7.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAEEAACAAAAAAAAQAAAAAAAQAACAAAAAA=</HashCode>
+      <FileName>Models\MovieComment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.Models.MovieTicketContext" Collapsed="true">
+    <Position X="9.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACEAAAAAAAAAAAAAAACEAAAgAAAAAAEAA=</HashCode>
+      <FileName>Models\MovieTicketContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.Models.MovieViewModel" Collapsed="true">
+    <Position X="0.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAEACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\MovieViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.Models.OrderHistory" Collapsed="true">
+    <Position X="4" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAACkAAAAAAAAAgIAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\OrderHistory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.Models.OrderStatus" Collapsed="true">
+    <Position X="5.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAQAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Models\OrderStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.Models.Role" Collapsed="true">
+    <Position X="9.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Role.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.Models.User" Collapsed="true">
+    <Position X="5.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovieTickets.Models.UserRole" Collapsed="true">
+    <Position X="7.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\UserRole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
