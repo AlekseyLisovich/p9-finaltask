@@ -29,7 +29,7 @@ namespace MovieTickets
                       "~/Content/slick5.css",
                       "~/Content/slick-theme.css",
                       "~/Content/bootstrap.css",
-                      "~/Content/Site9.css"
+                      "~/Content/Site17.css"
                       ));
         }
     }

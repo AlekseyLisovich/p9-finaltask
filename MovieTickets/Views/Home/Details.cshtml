@@ -39,7 +39,10 @@
         <div>
             <p class="text-details">
                 @Html.LabelFor(m => m.Movie, "Кинотеатры: ")
-                <a href="@Url.Action("ShowCinema", "Home", new { id = 1004 } ) ">@Model.cinema</a>
+                @Model.cinema
+                </p>
+            <p><a class="autoGenerate" href="@Url.Action("ShowCinemas", "Home", new { cinema = @Model.cinema } ) ">Автоматически</a>
+            <a class="handGenerate" href="@Url.Action("ShowCinemas", "Home", new { cinema = @Model.cinema } ) ">Вручную</a></p>
 </div>
     </div>
 

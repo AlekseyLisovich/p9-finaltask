@@ -138,13 +138,6 @@
 .dl-horizontal dt {
     white-space: normal;
 }
-
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
        /* styles for validation helpers */
 .field-validation-error {
     color: #b94a48;
@@ -262,6 +255,67 @@ p.photo-details{
     background-color: white;
     padding: 10px;
 }
+
+a.autoGenerate {
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    padding: .8em 1em calc(.8em + 3px);
+    border-radius: 3px;
+    background: rgb(64,199,129);
+    box-shadow: 0 -3px rgb(53,167,110) inset;
+    transition: 0.2s;
+    width: 100px;
+}
+
+    a.autoGenerate:hover {
+        background: rgb(53, 167, 110);
+    }
+
+    a.autoGenerate:active {
+        background: rgb(33,147,90);
+        box-shadow: 0 3px rgb(33,147,90) inset;
+    }
+
+a.handGenerate {
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    padding: .8em 1em calc(.8em + 3px);
+    border-radius: 3px;
+    background: rgb(236,85,66);
+    box-shadow: 0 -3px rgb(200,70,50) inset;
+    transition: 0.2s;
+    width: 100px;
+}
+
+    a.handGenerate:hover {
+        background: rgb(200,70,50);
+    }
+
+    a.handGenerate:active {
+        background: rgb(180,60,50);
+        box-shadow: 0 3px rgb(33,147,90) inset;
+    }
+
+.form-description {
+    width: 700px;
+    height: 100px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555555;
+    vertical-align: middle;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+.ticket {
+    width: 400px;
+    border-radius: 20px;
+    border: 2px black dashed;
+    margin: 30px;
+}
+
 @media screen and (max-width: 1920px) {
   .text-center{font-size: 20pt;}
   .photo-list{width: 120px;}

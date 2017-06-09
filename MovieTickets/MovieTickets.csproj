@@ -293,7 +293,7 @@
     <Content Include="Content\login.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site9.css" />
+    <Content Include="Content\Site17.css" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -359,6 +359,8 @@
     <Content Include="Views\Session\SelectMovie.cshtml" />
     <Content Include="Views\Session\MovieList.cshtml" />
     <Content Include="Views\Home\ShowCinema.cshtml" />
+    <Content Include="Views\Home\ShowCinemas.cshtml" />
+    <Content Include="Views\Home\ShowTicket.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201608301054188_InitialCreate.resx">

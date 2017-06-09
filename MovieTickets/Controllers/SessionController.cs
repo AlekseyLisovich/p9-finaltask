@@ -14,7 +14,7 @@ using System.IO;
 
 namespace MovieTickets.Controllers
 {
-    [Authorize(Roles = "admin")]
+    //[Authorize(Roles = "admin")]
     public class SessionController : BaseController
     {
         public ActionResult Index()

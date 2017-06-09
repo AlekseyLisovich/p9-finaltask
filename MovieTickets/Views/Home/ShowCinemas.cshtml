@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MovieTickets.Models.Cinema>
+@{
+    ViewBag.Title = "Кинотеатр";
+}
+
+<style>
+    body {
+        background-image: url(../../Content/assets/photo/bg.jpg);
+    }
+</style>
+
+<table class="table table-bg">
+    <tr>
+        <th class="text-center">Фото</th>
+        <th class="text-center">Название Кинотеатра</th>
+        <th class="text-center">Описание</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="">
+                <a href="@Url.Action("ShowCinema", "Home", new { id = item.Id } ) ">
+                    @Html.Raw("<img class='photo - details' src=\"data:image/jpeg;base64,"
+                         + Convert.ToBase64String(item.Image) + "\" />")
+                </a>
+            </td>
+            <td class="text-center text-center-bg">
+                <a href="@Url.Action("ShowCinema", "Home", new { id = item.Id } ) ">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </a>
+            </td>
+            <td>
+                @Html.TextAreaFor(modelItem => item.Description, 7, 400, new { @class = "form-description" })
+            </td>
+        </tr>
+    }
+</table>
+

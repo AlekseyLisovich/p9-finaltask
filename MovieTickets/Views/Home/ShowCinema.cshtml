@@ -9,9 +9,10 @@
     }
 </style>
 <div class="film-details">
-    <h2>Фильм: @Model.Name</h2>
 
     <div class="movie-details">
+        <h2>Фильм: @Model.Name</h2>
+
         @Html.HiddenFor(m => m.Image)
         <p class="photo-details">
             @Html.Raw("<img class='photo - details' src=\"data:image/jpeg;base64,"
@@ -22,6 +23,14 @@
             <br />
             @Html.DisplayFor(m => m.Description)
         </p>
+
+        <h1>Доступные сеансы:</h1>
+        <p>
+            <a class="autoGenerate" href="@Url.Action("ShowTicket", "Home", new { id = 1 } ) ">12:00</a>
+            <a class="autoGenerate" href="@Url.Action("ShowTicket", "Home", new { id = 2 } ) ">16:00</a>
+            <a class="autoGenerate" href="@Url.Action("ShowTicket", "Home", new { id = 3 } ) ">20:00</a>
+        </p>
     </div>
+
 </div>
 

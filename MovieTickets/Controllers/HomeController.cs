@@ -15,8 +15,10 @@ using System.Threading.Tasks;
 
 namespace MovieTickets.Controllers
 {
+    
     public class HomeController : BaseController
-    {             
+    {
+        static public string ticketResult;
         public ViewResult Index(string sortOrder, string searchString)
         {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name desc" : "";
@@ -75,7 +77,7 @@ namespace MovieTickets.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "moderator")]
+        //[Authorize(Roles = "moderator")]
         public ActionResult Create()
         {
             return View();
@@ -127,8 +129,10 @@ namespace MovieTickets.Controllers
         }
         [HttpGet]
         public ActionResult Details(int id)
-        {          
+        {
+            ticketResult = "";
             Movie m = db.Movies.Find(id);
+            ticketResult += m.Name + m.Price + " " + m.Date.Day + "/" + m.Date.Month;
             MovieViewModel model = new MovieViewModel();
             model.Movie = new Movie { Name = m.Name, ID = m.ID, Date = m.Date, Description = m.Description, Image = m.Image, MovieComments = m.MovieComments
             , Price = m.Price, Rating = m.Rating };
@@ -159,16 +163,52 @@ namespace MovieTickets.Controllers
 
             return RedirectToAction("Details");
         }
+        
+        [HttpGet]
+        public ActionResult ShowCinemas(string cinema)
+        {
+            string[] cinemasInfo = cinema.Split(' ');
+            var cinemas = db.Cinemas;
+            if (cinemas == null)
+            {
+                return HttpNotFound();
+            }
+            
+            for(int i = 0; i < cinemasInfo.Length; i++)
+                foreach(var cinem in cinemas)
+                {
+                    if (cinem.Name == cinemasInfo[i])
+                        cinemas.Add(cinem);
+
+                }
+            return View(cinemas);
+        }
 
         [HttpGet]
         public ActionResult ShowCinema(int id)
         {
             Cinema cinema = db.Cinemas.Find(id);
+            ticketResult += " " + cinema.Name;
             if (cinema == null)
             {
                 return HttpNotFound();
             }
             return View(cinema);
+        }
+
+        [HttpGet]
+        public ActionResult ShowTicket(int id)
+        {
+            if (id == 1)
+                ticketResult += " " + "12:00";
+            else if(id == 2)
+                ticketResult += " " + "16:00";
+            else if(id == 3)
+                ticketResult += " " + "20:00";
+
+            String[] ticketInfo = ticketResult.Split(' ');
+
+            return View(ticketInfo);
         }
     }
 }

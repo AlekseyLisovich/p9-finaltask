@@ -1,0 +1,14 @@
+﻿@model string[]
+@{
+    ViewBag.Title = "ShowTicket";
+}
+<div class="ticket">
+    <h1 style="text-align:center;">Ваш билет</h1>
+    <h3 style="text-align:center;">Фильм: @Model[0]</h3>
+    <h3 style="text-align:center;">Цена: @Model[1] руб</h3>
+    <h3 style="text-align:center;">Дата: @Model[2]</h3>
+    <h3 style="text-align:center;">Кинотеатр: @Model[3]</h3>
+    <h3 style="text-align:center;">Время сеанса: @Model[4]</h3>
+</div>
+<div><a class="autoGenerate" href="@Url.Action("Index", "Home" ) ">Оплатить</a>
+<a class="handGenerate" href="@Url.Action("Index", "Home" ) ">Отклонить</a></div>
