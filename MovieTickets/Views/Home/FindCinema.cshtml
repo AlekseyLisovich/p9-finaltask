@@ -1,0 +1,178 @@
+﻿@model string
+@{
+    ViewBag.Title = "FindCinema";
+}
+
+<p id="result">Где вы живете?</p>
+<div id="mapSurface"></div>
+<form action="/Home/ShowTicketAuto" method="post">
+    <p>Name: <input type="text" id="cinema" name="cinema" /></p>
+    <input type="submit" />
+</form>
+<script type="text/javascript">
+var results;
+var map;
+
+window.onload = function() {
+    result = document.getElementById('result');
+
+	var myOptions = {
+        zoom: 13,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+	map = new google.maps.Map(document.getElementById("mapSurface"), myOptions);
+
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(
+		            geolocationSuccess, geolocationFailure);
+
+		result.innerHTML = "Search completed";
+	}
+	else {
+		result.innerHTML = "Your browser does not support geolocation";
+		goToDefaultLocation();
+	}
+	function initMap() {
+        var myLatLng = {lat: -25.363, lng: 131.044};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+      }
+}
+
+function geolocationSuccess(position) {
+	var location = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+	inMap(location, position.coords.latitude, position.coords.longitude);
+	result.innerHTML = "Ваше местоположение будет показано на карте";
+}
+
+function geolocationFailure(positionError) {
+
+	goToDefaultLocation();
+}
+
+function goToDefaultLocation() {
+	var moscow = new google.maps.LatLng(55.753878,37.649275);
+	map.setCenter(moscow);
+}
+
+function inMap(location, latitude, longitude) {
+	var myLatLng = {lat:latitude, lng:longitude};
+	var movieLatLng = [{lat:53.922170, lng:27.596675}, {lat:53.929339, lng:27.556090}, {lat: 53.908484, lng: 27.492521}, {lat: 53.904987, lng: 27.542947}, {lat: 53.908352, lng: 27.580900},
+	{lat: 53.885865, lng: 27.587580}, {lat: 53.855235, lng: 27.609965}, {lat: 53.901264, lng: 27.554207}, {lat: 53.909644, lng: 27.547449}, {lat: 53.926363, lng: 27.517419}];
+	var map = new google.maps.Map(document.getElementById('mapSurface'), {
+    zoom: 12,
+    center: movieLatLng[0]
+  });
+
+map.setCenter(location);
+
+	var distance = 10000000;
+	var cinema;
+	for(i = 0; i < 10; i++)
+	{
+		if(distance>getDistance(myLatLng, movieLatLng[i]))
+		{
+			distance = getDistance(myLatLng, movieLatLng[i]);
+            cinema = i;
+		}
+	}
+    console.log(cinema);
+	var infowindow = new google.maps.InfoWindow();
+	infowindow.setContent("Вы");
+    infowindow.setPosition(location);
+    document.getElementById('cinema').value = cinema;
+	infowindow.open(map);
+
+  var marker1 = new google.maps.Marker({
+    position: movieLatLng[0],
+    map: map,
+    label: 'Октябрь'
+  });
+
+  var marker2 = new google.maps.Marker({
+    position: movieLatLng[1],
+    map: map,
+    label: 'Киев'
+  });
+
+  var marker3 = new google.maps.Marker({
+    position: movieLatLng[2],
+    map: map,
+    label: 'Аврора'
+  });
+
+  var marker4 = new google.maps.Marker({
+    position: movieLatLng[3],
+    map: map,
+    label: 'Беларусь'
+  });
+
+  var marker5 = new google.maps.Marker({
+    position: movieLatLng[4],
+    map: map,
+    label: 'Мир'
+  });
+
+  var marker6 = new google.maps.Marker({
+    position: movieLatLng[5],
+    map: map,
+    label: 'Рокета'
+  });
+
+  var marker7 = new google.maps.Marker({
+    position: movieLatLng[6],
+    map: map,
+    label: 'Салют'
+  });
+
+  var marker8 = new google.maps.Marker({
+    position: movieLatLng[7],
+    map: map,
+    label: 'Победа'
+  });
+
+  var marker9 = new google.maps.Marker({
+    position: movieLatLng[8],
+    map: map,
+    label: 'Москва'
+  });
+
+  var marker10 = new google.maps.Marker({
+    position: movieLatLng[9],
+    map: map,
+    label: 'Замок'
+  });
+
+};
+
+var rad = function(x) {
+  return x * Math.PI / 180;
+};
+
+var getDistance = function(p1, p2) {
+  var R = 6378137; // Earth’s mean radius in meter
+  var dLat = rad(p2.lat - p1.lat);
+  var dLong = rad(p2.lng - p1.lng);
+  var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(rad(p1.lat)) * Math.cos(rad(p2.lat)) *
+    Math.sin(dLong / 2) * Math.sin(dLong / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var d = R * c;
+  return d; // returns the distance in meter
+    };
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAf_PHfb21_k8iW1yKFUd55bS8iE-Ogv4I&callback=initMap&language=ru&region=RU"></script>
+
+
+
+

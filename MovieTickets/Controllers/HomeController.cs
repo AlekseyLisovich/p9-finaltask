@@ -210,5 +210,18 @@ namespace MovieTickets.Controllers
 
             return View(ticketInfo);
         }
+
+        [HttpGet]
+        public ActionResult FindCinema()
+        {
+            string cinema = "";
+            return View(cinema);
+        }
+
+        [HttpPost]
+        public ActionResult ShowTicketAuto(string cinema)
+        {
+            return View();
+        }
     }
 }

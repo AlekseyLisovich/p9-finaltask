@@ -316,6 +316,17 @@ a.handGenerate {
     margin: 30px;
 }
 
+#mapSurface {
+    width: 800px;
+    height: 500px;
+    border: solid 1px black;
+}
+#result {
+    font-size: 24px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
 @media screen and (max-width: 1920px) {
   .text-center{font-size: 20pt;}
   .photo-list{width: 120px;}
