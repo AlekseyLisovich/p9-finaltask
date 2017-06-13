@@ -276,7 +276,26 @@ a.autoGenerate {
         background: rgb(33,147,90);
         box-shadow: 0 3px rgb(33,147,90) inset;
     }
+#autoGenerate {
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    padding: .8em 1em calc(.8em + 3px);
+    border-radius: 3px;
+    background: rgb(64,199,129);
+    box-shadow: 0 -3px rgb(53,167,110) inset;
+    transition: 0.2s;
+    width: 150px;
+}
 
+    #autoGenerate:hover {
+        background: rgb(53, 167, 110);
+    }
+
+    #autoGenerate:active {
+        background: rgb(33,147,90);
+        box-shadow: 0 3px rgb(33,147,90) inset;
+    }
 a.handGenerate {
     font-weight: 700;
     color: white;
@@ -325,6 +344,19 @@ a.handGenerate {
     font-size: 24px;
     margin-top: 10px;
     font-weight: bold;
+}
+.cinema-info {
+    margin-top: 15px;
+    font-size: 16pt;
+    font-weight: bold;
+}
+.cinema-form {
+    padding: 4px 8px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 @media screen and (max-width: 1920px) {

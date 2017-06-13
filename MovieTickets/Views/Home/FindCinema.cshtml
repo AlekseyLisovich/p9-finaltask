@@ -6,8 +6,9 @@
 <p id="result">Где вы живете?</p>
 <div id="mapSurface"></div>
 <form action="/Home/ShowTicketAuto" method="post">
-    <p>Name: <input type="text" id="cinema" name="cinema" /></p>
-    <input type="submit" />
+    <p class="cinema-info">Ближайший кинотеатр: <input type="text" id="cinema" name="cinema" class="cinema-form"/></p>
+    <p class="cinema-info">Ближайший сеанс: <input type="text" id="date" name="date" class="cinema-form" /></p>
+    <input  type="submit" value="Подтвердить" id="autoGenerate"/>
 </form>
 <script type="text/javascript">
 var results;
@@ -87,10 +88,12 @@ map.setCenter(location);
 		}
 	}
     console.log(cinema);
+    
 	var infowindow = new google.maps.InfoWindow();
 	infowindow.setContent("Вы");
     infowindow.setPosition(location);
-    document.getElementById('cinema').value = cinema;
+    document.getElementById('cinema').value = getCinema(cinema);
+    document.getElementById('date').value = getSession();
 	infowindow.open(map);
 
   var marker1 = new google.maps.Marker({
@@ -157,8 +160,42 @@ map.setCenter(location);
 
 var rad = function(x) {
   return x * Math.PI / 180;
-};
+    };
+    var getCinema = function (cinema) {
+        if (cinema == 0)
+            return 'Октябрь';
+        if (cinema == 1)
+            return 'Киев';
+        if (cinema == 2)
+            return 'Аврора';
+        if (cinema == 3)
+            return 'Беларусь';
+        if (cinema == 4)
+            return 'Мир';
+        if (cinema == 5)
+            return 'Рокета';
+        if (cinema == 6)
+            return 'Салют';
+        if (cinema == 7)
+            return 'Победа';
+        if (cinema == 8)
+            return 'Москва';
+        if (cinema == 9)
+            return 'Замок';
+    };
 
+    var getSession = function () {
+        var date = new Date();
+        var curDate = date.getHours() + 1;
+        if (curDate < 12)
+            return '12:00';
+        else if (curDate > 12 && curDate < 16)
+            return '16:00';
+        else if (curDate > 16 && curDate < 20)
+            return '20:00';
+        else
+            return 'сегодня больше нет сеансов';
+    };
 var getDistance = function(p1, p2) {
   var R = 6378137; // Earth’s mean radius in meter
   var dLat = rad(p2.lat - p1.lat);
@@ -171,7 +208,7 @@ var getDistance = function(p1, p2) {
   return d; // returns the distance in meter
     };
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAf_PHfb21_k8iW1yKFUd55bS8iE-Ogv4I&callback=initMap&language=ru&region=RU"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA43EuIgreMYwlzfJb-eFMPaXJar7Vb41g&callback=initMap&language=ru&region=RU"></script>
 
 
 

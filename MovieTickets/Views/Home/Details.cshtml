@@ -41,7 +41,7 @@
                 @Html.LabelFor(m => m.Movie, "Кинотеатры: ")
                 @Model.cinema
                 </p>
-            <p><a class="autoGenerate" href="@Url.Action("ShowCinemas", "Home", new { cinema = @Model.cinema } ) ">Автоматически</a>
+            <p><label style="font-size: 16pt;">Найти билет: </label> <a class="autoGenerate" href="@Url.Action("FindCinema", "Home", new { cinema = @Model.cinema } ) ">Автоматически</a>
             <a class="handGenerate" href="@Url.Action("ShowCinemas", "Home", new { cinema = @Model.cinema } ) ">Вручную</a></p>
 </div>
     </div>

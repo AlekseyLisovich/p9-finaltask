@@ -18,7 +18,7 @@ namespace MovieTickets.Controllers
     
     public class HomeController : BaseController
     {
-        static public string ticketResult;
+        static public string[] ticketResult = new string[5];
         public ViewResult Index(string sortOrder, string searchString)
         {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name desc" : "";
@@ -130,9 +130,14 @@ namespace MovieTickets.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
-            ticketResult = "";
+            for (int i = 0; i < ticketResult.Length; i++)
+            {
+                ticketResult[i] = "";
+            }
             Movie m = db.Movies.Find(id);
-            ticketResult += m.Name + m.Price + " " + m.Date.Day + "/" + m.Date.Month;
+            ticketResult[0] = m.Name;
+            ticketResult[1] = Convert.ToString(m.Price);
+            ticketResult[2] = m.Date.Day + "/" + m.Date.Month;
             MovieViewModel model = new MovieViewModel();
             model.Movie = new Movie { Name = m.Name, ID = m.ID, Date = m.Date, Description = m.Description, Image = m.Image, MovieComments = m.MovieComments
             , Price = m.Price, Rating = m.Rating };
@@ -173,22 +178,24 @@ namespace MovieTickets.Controllers
             {
                 return HttpNotFound();
             }
-            
-            for(int i = 0; i < cinemasInfo.Length; i++)
-                foreach(var cinem in cinemas)
+            List<Cinema> c = new List<Cinema>();
+            for (int i = 0; i < cinemasInfo.Length; i++)
+            {
+                foreach (var cinem in cinemas)
                 {
                     if (cinem.Name == cinemasInfo[i])
-                        cinemas.Add(cinem);
+                        c.Add(cinem);
 
                 }
-            return View(cinemas);
+            }
+            return View(c);
         }
 
         [HttpGet]
         public ActionResult ShowCinema(int id)
         {
             Cinema cinema = db.Cinemas.Find(id);
-            ticketResult += " " + cinema.Name;
+            ticketResult[3] = " " + cinema.Name;
             if (cinema == null)
             {
                 return HttpNotFound();
@@ -200,15 +207,13 @@ namespace MovieTickets.Controllers
         public ActionResult ShowTicket(int id)
         {
             if (id == 1)
-                ticketResult += " " + "12:00";
+                ticketResult[4] = " " + "12:00";
             else if(id == 2)
-                ticketResult += " " + "16:00";
+                ticketResult[4] = " " + "16:00";
             else if(id == 3)
-                ticketResult += " " + "20:00";
+                ticketResult[4] = " " + "20:00";
 
-            String[] ticketInfo = ticketResult.Split(' ');
-
-            return View(ticketInfo);
+            return View(ticketResult);
         }
 
         [HttpGet]
@@ -219,9 +224,11 @@ namespace MovieTickets.Controllers
         }
 
         [HttpPost]
-        public ActionResult ShowTicketAuto(string cinema)
+        public ActionResult ShowTicketAuto(string cinema, string date)
         {
-            return View();
+            ticketResult[3] = cinema;
+            ticketResult[4] = date;
+            return View(ticketResult);
         }
     }
 }
